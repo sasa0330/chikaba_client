@@ -15,15 +15,10 @@ export const App = () => {
   const [modalText, setModalText] = useState<string>("");
   const [isModalCancel, setIsModalCancel] = useState<boolean>(false);
   const [shopListCount, setShopListCount] = useState<number>(0);
-  const AxiosRequests = {
-    PROXY_SERVER_URL: "https://radiant-spire-39097.herokuapp.com/",
-    BASE_URL_HOTPEPPER: "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/",
-    API_KEY_HOTPEPPER: "d1ad78d8ad96165e"
-  };
   let hotpepper_lat: number;
   let hotpepper_lng: number;
   const hotpepper_genre = genreSelectbox.code;
-
+  const env = process.env;
 
   const clickGetShopList = () => {
     //店情報初期化
@@ -77,8 +72,7 @@ export const App = () => {
 
   //店一覧の取得
   const getShopList = () => {
-    const requestUrl = `${AxiosRequests.PROXY_SERVER_URL}${AxiosRequests.BASE_URL_HOTPEPPER}?key=${AxiosRequests.API_KEY_HOTPEPPER}&lat=${hotpepper_lat}&lng=${hotpepper_lng}&genre=${hotpepper_genre}&format=json`;
-    console.log(requestUrl);
+    const requestUrl = `${env.REACT_APP_PROXY_SERVER_URL}${env.REACT_APP_HOTPEPPER_BASE_URL}?key=${env.REACT_APP_HOTPEPPER_API_KEY}&lat=${hotpepper_lat}&lng=${hotpepper_lng}&genre=${hotpepper_genre}&format=json`;
     axios.get(requestUrl)
       .then(function (response) {
         // handle success
