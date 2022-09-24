@@ -1,10 +1,9 @@
 export type shopListType = {
-    id: string,
+    key: string,
     photoPcM: string,
     shopName: string,
     lunch: string,
     budgetName: string,
-    large_areaName: string,
-    access: string
+    address: string,
 }
 

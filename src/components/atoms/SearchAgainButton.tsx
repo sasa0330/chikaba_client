@@ -2,14 +2,14 @@ import React from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 
 type Props = {
-    isDispShopList: boolean;
+    shopListCount: number;
 }
 
 export const SearchAgainButton = (props: Props) => {
-    const { isDispShopList } = props;
+    const { shopListCount } = props;
     return (
         <>
-            {isDispShopList ? (
+            {shopListCount > 0 ? (
                 <a className="searchAgain" href="#shopSearch" >
                     <SearchIcon></SearchIcon>
                 </a >

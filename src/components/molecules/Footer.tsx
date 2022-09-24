@@ -1,14 +1,14 @@
 import { SearchAgainButton } from '../atoms/SearchAgainButton'
 
 type Props = {
-    isDispShopList: boolean
+    shopListCount: number
 }
 
 export const Footer = (props: Props) => {
-    const { isDispShopList } = props;
+    const { shopListCount } = props;
     return (
         <>
-            <footer><SearchAgainButton isDispShopList={isDispShopList} /></footer>
+            <footer><SearchAgainButton shopListCount={shopListCount} /></footer>
         </>
     )
 

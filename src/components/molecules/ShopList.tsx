@@ -4,10 +4,10 @@ import { shopListType } from '../../type/shopList';
 type Props = shopListType;
 
 export const ShopList = (props: Props) => {
-    const { id, photoPcM, shopName, lunch, budgetName, large_areaName, access } = props;
+    const { key, photoPcM, shopName, lunch, budgetName, address } = props;
 
     return (
-        <React.Fragment key={id}>
+        <React.Fragment key={key}>
             <li className="shopList__item">
                 <div className="shopList__img">
                     <img src={photoPcM} alt={shopName} />
@@ -17,7 +17,7 @@ export const ShopList = (props: Props) => {
                     <ul className="shopList__discription">
                         <li>ランチ：{lunch}</li>
                         <li>ディナー：{budgetName}</li>
-                        <li>{`${large_areaName}${access}`}</li>
+                        <li>{`${address}`}</li>
                     </ul>
                 </div>
             </li>
