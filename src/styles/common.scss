@@ -59,6 +59,10 @@ body {
     }
 }
 
+.serch_area {
+    text-align: center;
+}
+
 //ShopSerchComponent.jsx
 .buttonSearch {
     @include buttonReset;
@@ -120,13 +124,17 @@ body {
 
     &__item {
         padding: 10px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        display: block;
 
         &+& {
             border-top: solid 1px #000;
         }
+    }
+
+    &__link {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
     &__img {

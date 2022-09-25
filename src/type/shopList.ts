@@ -1,5 +1,5 @@
 export type shopListType = {
-    key: string,
+    propsKey: string,
     photoPcM: string,
     shopName: string,
     lunch: string,
