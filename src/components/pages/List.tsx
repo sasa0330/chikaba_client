@@ -25,9 +25,8 @@ export const List = (props: Props) => {
           セッションストレージに情報があれば、その店舗情報を表示する。
           的なことをしたいなー
         */
-        console.log(sessionStorage.getItem("shopListStorage"));
-        //setShoplist(sessionStorage.getItem("shopListStorage"));
-        console.log("表示した");
+
+        getShopList()
     }, []);
     const clickGetShopList = () => {
         //店情報初期化
