@@ -19,7 +19,6 @@ export const List = (props: Props) => {
     let hotpepper_lat: number;
     let hotpepper_lng: number;
     const hotpepper_genre: string = genreSelectbox.code;
-    const env = process.env;
     useEffect(() => {
         /*
           初めて表示したとき（詳細画面から戻ってきた時）は
@@ -82,7 +81,13 @@ export const List = (props: Props) => {
 
     //店一覧の取得
     const getShopList = () => {
-        const requestUrl = `${env.REACT_APP_PROXY_SERVER_URL}${env.REACT_APP_HOTPEPPER_BASE_URL}?key=${env.REACT_APP_HOTPEPPER_API_KEY}&lat=${hotpepper_lat}&lng=${hotpepper_lng}&genre=${hotpepper_genre}&format=json`;
+        //すごく良くないことをしているのでどうにかしたい
+        const PROXY_SERVER_URL = "https://radiant-spire-39097.herokuapp.com/";
+        const HOTPEPPER_API_KEY = "a6972642ce7d9bcd";
+        const HOTPEPPER_BASE_URL = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/";
+
+        const requestUrl = `${PROXY_SERVER_URL}${HOTPEPPER_BASE_URL}?key=${HOTPEPPER_API_KEY}&lat=${hotpepper_lat}&lng=${hotpepper_lng}&genre=${hotpepper_genre}&format=json`;
+        console.log(requestUrl);
         axios.get(requestUrl)
             .then(function (response) {
                 // handle success
