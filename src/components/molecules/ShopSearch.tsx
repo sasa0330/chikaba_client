@@ -1,7 +1,6 @@
 import React from 'react';
 import { SelectGenre } from '../atoms/SelectGenre';
 import { SearchButton } from '../atoms/SearchButton';
-import { textAlign } from '@mui/system';
 
 //メモ
 //この辺りのpropsってグローバルにできそうだけどむずい
