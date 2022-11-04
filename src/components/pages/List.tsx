@@ -26,7 +26,8 @@ export const List = (props: Props) => {
           的なことをしたいなー
         */
 
-        getShopList()
+        //やりたいけど無限ループWARNING出るので考える
+        //getShopList()
     }, []);
     const clickGetShopList = () => {
         //店情報初期化
