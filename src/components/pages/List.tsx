@@ -5,15 +5,15 @@ import { shopListType } from '../../type/shopList';
 import { ShopSearch } from '../molecules/ShopSearch';
 
 type Props = {
-    setShopListCount: Function;
     setIsModalCancel: Function;
     setModalText: Function;
 }
 
 
 export const List = (props: Props) => {
-    const { setShopListCount, setIsModalCancel, setModalText } = props;
+    const { setIsModalCancel, setModalText } = props;
     const [genreSelectbox, setGenreSelectbox] = useState({ "code": "G001", "genre": "居酒屋" });
+    const [shopListCount, setShopListCount] = useState<number>(0);
     const [shopList, setShoplist] = useState<Array<shopListType>>([]);
 
     let hotpepper_lat: number;
@@ -128,6 +128,7 @@ export const List = (props: Props) => {
             .finally(function () {
                 // always
                 console.log("HotpepperAPI 完了");
+                console.log(shopListCount);//これでリストがあるか判別する
             });
     }
 

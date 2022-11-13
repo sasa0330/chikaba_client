@@ -1,5 +1,6 @@
-import React from 'react';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import React, { useState } from 'react';
+import { Badge } from '../atoms/Badge'
+//import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';}
 
 type Props = {
     setGenreSelectbox: Function;
@@ -7,6 +8,7 @@ type Props = {
 
 export const SelectGenre = (props: Props) => {
     const { setGenreSelectbox } = props;
+    const [currentIndex, setCurrentIndex] = useState<number>(0);
     const HOTPEPPR_GENRE_ARR = [
         {
             "code": "G001",
@@ -80,11 +82,14 @@ export const SelectGenre = (props: Props) => {
     //メモ
     //eventの型定義よくわからんので、以下の記事を参考に。
     //参考：https://zenn.dev/koduki/articles/0f8fcbc9a7485b
-    const changeGenreSelect = (event: { target: HTMLSelectElement }) => {
-        const genreCode = event.target.value;
+
+    const changeGenreSelect = (targetCode: string, index: number) => {
+        const genreCode = targetCode;
         for (let item of HOTPEPPR_GENRE_ARR) {
             if (genreCode === item.code) {
+                console.log(`コード変わった：${item.code}${item.genre}`)
                 setGenreSelectbox(item);
+                setCurrentIndex(index);
             }
         }
     }
@@ -92,19 +97,21 @@ export const SelectGenre = (props: Props) => {
         <>
             <div>
                 <div className="selectGenre">
-                    <select onChange={changeGenreSelect} className="selectGenre__select">
+                    <div className="selectGenre__list">
                         {
                             HOTPEPPR_GENRE_ARR.map((genreitem, index) => {
+                                let badgeClassName: string = "badge__genre";
+                                if (currentIndex === index) {
+                                    badgeClassName += " badge__genre--selected";
+                                }
                                 return (
                                     <React.Fragment key={index}>
-                                        <option value={genreitem.code}>{genreitem.genre}</option>
+                                        <Badge thisOnClick={() => changeGenreSelect(genreitem.code, index)} thisValue={genreitem.genre} thisClassName={badgeClassName}></Badge>
                                     </React.Fragment>
                                 )
                             })
                         }
-
-                    </select>
-                    <ArrowDropDownIcon className="selectGenre__triangle" />
+                    </div>
                 </div>
             </div>
         </>

@@ -6,7 +6,7 @@ export const Detail = () => {
 
     return (
         <>
-            <div>詳細画面は製作中。。。</div>
+            <div>詳細画面も作りたい。。</div>
         </>
     )
 }

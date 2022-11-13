@@ -14,8 +14,10 @@ export const MesageModal = (props: Props) => {
             {
                 modalText !== "" ? (
                     <>
-                        <div className="searchLoding">{modalText}</div>
-                        <ModalCancelButton isModalCancel={isModalCancel} setModalText={setModalText} />
+                        <div className="searchLoding">
+                            {modalText}
+                            <ModalCancelButton isModalCancel={isModalCancel} setModalText={setModalText} />
+                        </div>
                     </>
                 ) : null
             }

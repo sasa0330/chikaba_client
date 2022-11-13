@@ -10,12 +10,11 @@
 //Sassじゃない何かでCSS当てる方がいいのか？
 
 //設定
-@import url('https://fonts.googleapis.com/css?family=Sawarabi+Mincho');
 @import url('destyle.css');
 
 //汎用パーツ
-@mixin wf-sawarabimincho {
-    font-family: "Sawarabi Mincho";
+@mixin wf-YuGothic {
+    font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", sans-serif;
 }
 
 @mixin buttonReset {
@@ -32,30 +31,36 @@
     appearance: none;
 }
 
+@mixin selectDefault {
+    @include selectReset;
+    border: solid 1px #000;
+    padding: 5px;
+    border-radius: 5px;
+    width: 100%;
+}
+
 $MainOrange: orangered;
 
 //全画面
 body {
-    @include wf-sawarabimincho;
+    @include wf-YuGothic;
     background-color: #FFF;
 }
 
 //MainTitle.jsx
 .mainTitle {
     display: block;
-    text-align: center;
-    padding: 10px;
+    height: 60px;
+    border-bottom: solid 1px #000;
+    display: flex;
+    align-items: center;
 
     &__title {
         color: $MainOrange;
-        font-size: 30px;
-        margin-bottom: 30px;
-    }
-
-    &__catchphrase {
-        color: $MainOrange;
-        font-size: 15px;
-        margin-bottom: 10px
+        font-size: 16px;
+        font-weight: bold;
+        width: 100vw;
+        text-align: center;
     }
 }
 
@@ -74,29 +79,25 @@ body {
     border-radius: 10px;
 }
 
-.selectGenre {
-    display: block;
-    position: relative;
-    display: block;
-    margin: 0 auto;
-    height: 40px;
-    width: 100%;
-    margin-bottom: 20px;
 
-    &__select {
-        @include selectReset;
-        height: 100%;
-        width: 100%;
-        padding: 5px;
-        border-radius: 5px;
-        border: solid 1px #000;
+.selectGenre {
+    width: 100%;
+    overflow: scroll;
+    padding: 5px;
+
+    &__list {
+        display: flex;
+        width: max-content;
     }
 
-    &__triangle {
-        position: absolute;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
+    &__item {
+        &+& {
+            margin-left: 5px;
+        }
+
+        &.selected {
+            background-color: #DDD;
+        }
     }
 }
 
@@ -165,16 +166,22 @@ footer {
     bottom: 0;
 }
 
-.searchAgain {
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-    background-color: #FFF;
-    border: solid 1px #000;
-    border-radius: 30px;
+.badge {
+    display: block;
+
+    font-size: 13px;
+    border-radius: 5px;
+
+    &+& {
+        margin-left: 5px;
+    }
+
+    &__genre {
+        padding: 8px 6px;
+        border: solid 1px #000;
+    }
+
+    &__genre--selected {
+        background-color: #DDD;
+    }
 }
