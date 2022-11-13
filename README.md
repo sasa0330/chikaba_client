@@ -49,4 +49,13 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 # Note
 cloneした後に必要なこと
 npm install
-npm install sass
+
+
+
+
+このアプリの作りに関して
+・ホットペッパーAPIを使って飲食店情報を取得しています
+・基本的な構成はReact/TypeScript/SCSSです。
+・ゆるくアトミックデザインを採用しています。
+・TypeScriptはうまく使えているか分かりません。ゆるく使っています。
+・詳細画面も作りたいです。
