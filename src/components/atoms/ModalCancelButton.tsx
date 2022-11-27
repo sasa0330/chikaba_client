@@ -1,17 +1,15 @@
-import React from 'react';
+import { useContext } from 'react';
+import { ModalContext } from '../../providers/ModalProvider';
 
-type Props = {
-    isModalCancel: boolean
-    setModalText: Function
-}
-export const ModalCancelButton = (props: Props) => {
-    const { isModalCancel = false, setModalText } = props;
-
+export const ModalCancelButton = () => {
+    const { modalState, changeModalState } = useContext(ModalContext);
     return (
         <>
             {
-                isModalCancel ? (
-                    <div onClick={() => { setModalText("") }}>閉じる</div>
+                modalState.isPossibleClose ? (
+                    <div onClick={() => {
+                        changeModalState("", "", false);
+                    }}>閉じる</div>
                 ) : null
             }
         </>

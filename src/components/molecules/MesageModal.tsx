@@ -1,22 +1,24 @@
-import React from 'react';
+import { useContext } from 'react';
 import { ModalCancelButton } from '../atoms/ModalCancelButton'
+import { ModalContext } from '../../providers/ModalProvider';
 
-type Props = {
-    modalText: string
-    isModalCancel: boolean
-    setModalText: Function
-}
-export const MesageModal = (props: Props) => {
-    const { modalText, isModalCancel = false, setModalText } = props;
-
+export const MesageModal = () => {
+    const { modalState } = useContext(ModalContext);
     return (
         <>
             {
-                modalText !== "" ? (
+
+                modalState.text !== "" ? (
                     <>
-                        <div className="searchLoding">
-                            {modalText}
-                            <ModalCancelButton isModalCancel={isModalCancel} setModalText={setModalText} />
+                        <div className="modal">
+                            <div className="modal__search">
+                                <div className="modal__loadingIcon">
+                                    <div className="loader"></div>
+                                </div>
+                                <div className="modal__loadingText">{modalState.text}</div>
+                            </div>
+
+                            <ModalCancelButton />
                         </div>
                     </>
                 ) : null
