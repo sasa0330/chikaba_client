@@ -12,19 +12,21 @@ export const App = () => {
   return (
     <>
       <ModalProvider>
-        <Header />
-        <main>
-          {
-            <BrowserRouter>
-              <Routes>
-                <Route path="/" element={<List />} />
-                <Route path="/detail" element={<Detail />} />
-              </Routes>
-            </BrowserRouter>
-          }
-        </main>
-        <Footer />
-        <MesageModal />
+        <div className="container">
+          <Header />
+          <main>
+            {
+              <BrowserRouter>
+                <Routes>
+                  <Route path="/" element={<List />} />
+                  <Route path="/detail" element={<Detail />} />
+                </Routes>
+              </BrowserRouter>
+            }
+          </main>
+          <Footer />
+          <MesageModal />
+        </div>
       </ModalProvider>
     </>
   );

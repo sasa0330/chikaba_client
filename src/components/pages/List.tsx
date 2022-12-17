@@ -1,4 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react';
+/**
+ * 検索一覧画面
+ */
+
+import { useState, useEffect, useContext } from 'react';
 import { ShopList } from '../molecules/ShopList';
 import axios from 'axios';
 import { shopListType } from '../../type/shopList';
@@ -19,18 +23,26 @@ export const List = () => {
 
     }, []);
 
+    /**
+     * 「店を検索する」を押した時の処理
+     */
     const clickGetShopList = async () => {
-
         //店情報初期化
         setShoplist([]);
+        //検索中のローディング表示
         changeModalState("検索中…", true, false);
+        //現在地取得
         await getCurrentLocation().catch((error) => console.log(error));
+        //現在地店一覧取得
         await getShopList().catch((error) => console.log(error));
         console.log("HotpepperAPI 完了");
+        //検索中のローディング非表示
         changeModalState("", false, false);
     };
 
-    //現在地の取得
+    /**
+     * 現在地を取得する処理 
+     */
     const getCurrentLocation = () => {
         return new Promise(function (resolve: any, rejecte: any) {
             if (!navigator.geolocation) {
@@ -42,10 +54,12 @@ export const List = () => {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
                     // handle success
+
                     //緯度
                     hotpepper_lat = position.coords.latitude;
                     //経度
                     hotpepper_lng = position.coords.longitude;
+
                     resolve();
                 },
                 (geolocationError) => {
@@ -80,32 +94,13 @@ export const List = () => {
     //店一覧の取得
     const getShopList = () => {
         return new Promise(function (resolve: any, rejecte: any) {
-            //すごく良くないことをしているのでどうにかしたい
-            const PROXY_SERVER_URL = "https://radiant-spire-39097.herokuapp.com/";
-            const HOTPEPPER_API_KEY = "a6972642ce7d9bcd";
-            const HOTPEPPER_BASE_URL = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/";
-
-            const requestUrl = `${PROXY_SERVER_URL}${HOTPEPPER_BASE_URL}?key=${HOTPEPPER_API_KEY}&lat=${hotpepper_lat}&lng=${hotpepper_lng}&genre=${hotpepper_genre}&format=json`;
-            console.log(requestUrl);
+            const requestUrl = `/api`;
+            console.log(hotpepper_lat + hotpepper_lng + hotpepper_genre);
             axios.get(requestUrl)
                 .then(function (response) {
-                    // handle success
-                    //メモ
-                    //mapとかで一つ一つデータを格納するときは、その中でsetStateすると無駄に再描画する
-                    //ので、一回配列とかにしちゃうのが良さそう
-                    const responseShopList: Array<shopListType> = response.data.results.shop.map((item: any) => (
-                        {
-                            propsKey: item.id,
-                            photoPcM: item.photo.pc.m,
-                            shopName: item.name,
-                            lunch: item.lunch,
-                            budgetName: item.budget.name,
-                            address: item.address
-                        }
-                    ));
-
+                    const responseShopList = response.data;
+                    console.log(responseShopList);
                     setShoplist((prevState) => [...prevState, ...responseShopList]);
-
                     if (responseShopList.length === 0) {
                         changeModalState("検索結果なし", false, true);
                     }

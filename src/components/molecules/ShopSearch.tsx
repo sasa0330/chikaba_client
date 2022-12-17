@@ -1,4 +1,7 @@
-import React from 'react';
+/**
+ * 店舗検索部分
+ */
+
 import { SelectGenre } from './SelectGenre';
 import { SearchButton } from '../atoms/SearchButton';
 
@@ -13,7 +16,7 @@ export const ShopSearch = (props: Props) => {
     const { setGenreSelectbox, clickGetShopList } = props;
     return (
         <>
-            <div>
+            <div className="shop_serch">
                 <SelectGenre setGenreSelectbox={setGenreSelectbox}></SelectGenre>
                 <SearchButton clickGetShopList={clickGetShopList}></SearchButton>
             </div>

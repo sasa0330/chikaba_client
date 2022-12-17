@@ -1,6 +1,9 @@
+/**
+ * ジャンル選択バッジボタン
+ */
+
 import React, { useState } from 'react';
 import { Badge } from '../atoms/Badge'
-//import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';}
 
 type Props = {
     setGenreSelectbox: Function;

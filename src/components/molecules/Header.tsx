@@ -1,4 +1,6 @@
-import React from 'react';
+/**
+ * ヘッダー
+ */
 
 export const Header = () => {
     return (

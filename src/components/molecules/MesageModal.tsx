@@ -1,3 +1,7 @@
+/**
+ * モーダル
+ */
+
 import { useContext } from 'react';
 import { ModalCancelButton } from '../atoms/ModalCancelButton'
 import { ModalContext } from '../../providers/ModalProvider';

@@ -1,4 +1,6 @@
-
+/**
+ * フッター
+ */
 export const Footer = () => {
     return (
         <>

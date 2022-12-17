@@ -14,7 +14,14 @@ type Props = {
  * 定義するときはcreateContext()を使う。
  * createContext()のデフォルトの型が{}なので、stateとsetStateの型を明示的に決めてあげないとエラーになる。
  */
-export const ModalContext = createContext({} as { modalState: modalStateType; setModalState: Function; changeModalState: Function; });
+export const ModalContext = createContext(
+    {} as
+    {
+        modalState: modalStateType;
+        setModalState: Function;
+        changeModalState: Function;
+    }
+);
 
 /**
  * モーダル用のProveider
@@ -35,7 +42,7 @@ export const ModalProvider = (props: Props) => {
      * setModalStateするときはこの関数を使うと便利。
      * @param text - モーダルにセットするテキスト
      * @param isLoading - モーダルにローディングアイコンを表示するか
-     * @param isPos. ibleClose - ユーザーがモーダルを閉じられるようにするか
+     * @param isPossibleClose - ユーザーがモーダルを閉じられるようにするか
      */
     const changeModalState = (text: string, isLoading: boolean, isPossibleClose: boolean) => {
         const newModal = {

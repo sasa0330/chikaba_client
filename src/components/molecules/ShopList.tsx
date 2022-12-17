@@ -1,3 +1,7 @@
+/**
+ * 検索結果店一覧
+ */
+
 import React from 'react';
 import { shopListType } from '../../type/shopList';
 import axios from 'axios';
