@@ -13,20 +13,24 @@ import { ModalContext } from '../../providers/ModalProvider';
 
 export const List = () => {
     const { changeModalState } = useContext(ModalContext);
-    const [genreSelectbox, setGenreSelectbox] = useState({ "code": "G001", "genre": "居酒屋" });
+    const [genreSelectbox, setGenreSelectbox] = useState({ "code": "", "genre": "" });
     const [shopList, setShoplist] = useState<Array<shopListType>>([]);
 
     let hotpepper_lat: number;
     let hotpepper_lng: number;
-    const hotpepper_genre: string = genreSelectbox.code;
+    const hotpepper_genre: string = genreSelectbox.code !== "" ? genreSelectbox.code : "";
     useEffect(() => {
-
-    }, []);
+        if (hotpepper_genre) {
+            changeShopList();
+        }
+        //ESLintが「hotpepper_genreとchangeShopListの更新時もuseEffectしてよ」と注意してくる。無視する。
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [genreSelectbox]);
 
     /**
      * 「店を検索する」を押した時の処理
      */
-    const clickGetShopList = async () => {
+    const changeShopList = async () => {
         //店情報初期化
         setShoplist([]);
         //検索中のローディング表示
@@ -94,12 +98,12 @@ export const List = () => {
     //店一覧の取得
     const getShopList = () => {
         return new Promise(function (resolve: any, rejecte: any) {
-            const requestUrl = `/api`;
-            console.log(hotpepper_lat + hotpepper_lng + hotpepper_genre);
+            const requestUrl = `https://express-search-shop.onrender.com/api/shopList?lat=${hotpepper_lat}&lng=${hotpepper_lng}&shopGenre=${hotpepper_genre}`;
+            //const requestUrl = `http://localhost:3001/api/shopList?lat=${hotpepper_lat}&lng=${hotpepper_lng}&shopGenre=${hotpepper_genre}`;
+            console.log(requestUrl);
             axios.get(requestUrl)
                 .then(function (response) {
                     const responseShopList = response.data;
-                    console.log(responseShopList);
                     setShoplist((prevState) => [...prevState, ...responseShopList]);
                     if (responseShopList.length === 0) {
                         changeModalState("検索結果なし", false, true);
@@ -124,12 +128,12 @@ export const List = () => {
 
     return (
         <>
-            <ShopSearch clickGetShopList={clickGetShopList} setGenreSelectbox={setGenreSelectbox} />
+            <ShopSearch setGenreSelectbox={setGenreSelectbox} />
             <ul className="shopList">
                 {
                     shopList.map((shop) => {
                         return (
-                            <ShopList propsKey={shop.propsKey} photoPcM={shop.photoPcM} shopName={shop.shopName} lunch={shop.lunch} budgetName={shop.budgetName} address={shop.address} />
+                            <ShopList itemId={shop.itemId} photoPcM={shop.photoPcM} shopName={shop.shopName} lunch={shop.lunch} budgetName={shop.budgetName} address={shop.address} />
                         )
                     })
                 }

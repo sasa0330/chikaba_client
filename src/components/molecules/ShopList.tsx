@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 type Props = shopListType;
 
 export const ShopList = (props: Props) => {
-    const { propsKey, photoPcM, shopName, lunch, budgetName, address } = props;
+    const { itemId, photoPcM, shopName, lunch, budgetName, address } = props;
     const env = process.env;
 
 
@@ -47,8 +47,8 @@ export const ShopList = (props: Props) => {
     }
 
     return (
-        <React.Fragment key={propsKey}>
-            <li className="shopList__item" onClick={() => getShopDetail(String(propsKey))}>
+        <React.Fragment key={itemId}>
+            <li className="shopList__item" onClick={() => getShopDetail(String(getShopDetail))}>
                 <Link to='/detail' className="shopList__link">
                     <div className="shopList__img">
                         <img src={photoPcM} alt={shopName} />

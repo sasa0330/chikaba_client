@@ -99,7 +99,13 @@ footer {
 
     &__list {
         display: flex;
-        width: max-content;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        &:after {
+            content: "";
+            width: 28vw;
+        }
     }
 
     &__item {
@@ -198,13 +204,14 @@ footer {
     font-size: 13px;
     border-radius: 5px;
 
-    &+& {
-        margin-left: 5px;
-    }
-
     &__genre {
-        padding: 8px 6px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 28vw;
+        height: 18vw;
         border: solid 1px #000;
+        margin-bottom: 5vw;
         cursor: pointer;
     }
 

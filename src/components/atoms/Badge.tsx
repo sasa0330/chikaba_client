@@ -14,7 +14,7 @@ export const Badge = (props: Props) => {
     const { thisOnClick, thisValue, thisClassName } = props;
     return (
         <>
-            <div onClick={thisOnClick} className={`badge ${thisClassName}`}>
+            <div onClick={thisOnClick} className={`badge badge__genre ${thisClassName}`}>
                 {thisValue}
             </div>
         </>

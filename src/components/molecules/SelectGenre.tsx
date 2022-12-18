@@ -103,7 +103,7 @@ export const SelectGenre = (props: Props) => {
                     <div className="selectGenre__list">
                         {
                             HOTPEPPR_GENRE_ARR.map((genreitem, index) => {
-                                let badgeClassName: string = "badge__genre";
+                                let badgeClassName: string = "";
                                 if (currentIndex === index) {
                                     badgeClassName += " badge__genre--selected";
                                 }
