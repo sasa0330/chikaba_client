@@ -4,21 +4,25 @@
 
 import { useState, useEffect, useContext } from 'react';
 import { ShopList } from '../molecules/ShopList';
-import axios from 'axios';
-import { shopListType } from '../../type/shopList';
+import { TypeShopList } from '../../type/shopList';
 import { ShopSearch } from '../molecules/ShopSearch';
 import { ModalContext } from '../../providers/ModalProvider';
 
 
+type TypeGenle = {
+    code: string;
+    genre: string;
+}
 
 export const List = () => {
     const { changeModalState } = useContext(ModalContext);
-    const [genreSelectbox, setGenreSelectbox] = useState({ "code": "", "genre": "" });
-    const [shopList, setShoplist] = useState<Array<shopListType>>([]);
+    const [genreSelectbox, setGenreSelectbox] = useState<TypeGenle>({ "code": "", "genre": "" });
+    const [shopList, setShoplist] = useState<TypeShopList[]>([]);
 
     let hotpepper_lat: number;
     let hotpepper_lng: number;
     const hotpepper_genre: string = genreSelectbox.code !== "" ? genreSelectbox.code : "";
+
     useEffect(() => {
         if (hotpepper_genre) {
             changeShopList();
@@ -38,7 +42,7 @@ export const List = () => {
         //現在地取得
         await getCurrentLocation().catch((error) => console.log(error));
         //現在地店一覧取得
-        await getShopList().catch((error) => console.log(error));
+        await getShopList();
         console.log("HotpepperAPI 完了");
         //検索中のローディング非表示
         changeModalState("", false, false);
@@ -89,7 +93,7 @@ export const List = () => {
                     rejecte();
                 },
                 {
-                    enableHighAccuracy: true, // より高精度な位置
+                    //enableHighAccuracy: true, // より高精度な位置
                 }
             )
         })
@@ -97,31 +101,28 @@ export const List = () => {
 
     //店一覧の取得
     const getShopList = () => {
-        return new Promise(function (resolve: any, rejecte: any) {
-            const requestUrl = `https://express-search-shop.onrender.com/api/shopList?lat=${hotpepper_lat}&lng=${hotpepper_lng}&shopGenre=${hotpepper_genre}`;
-            //const requestUrl = `http://localhost:3001/api/shopList?lat=${hotpepper_lat}&lng=${hotpepper_lng}&shopGenre=${hotpepper_genre}`;
-            console.log(requestUrl);
-            axios.get(requestUrl)
-                .then(function (response) {
-                    const responseShopList = response.data;
-                    setShoplist((prevState) => [...prevState, ...responseShopList]);
-                    if (responseShopList.length === 0) {
-                        changeModalState("検索結果なし", false, true);
-                    }
-                    else {
-                        changeModalState("", false, true);
-                    }
-                    sessionStorage.setItem("shopListStorage", JSON.stringify(responseShopList));
-                    resolve();
-                })
-                .catch(function (error) {
-                    // handle error
-                    console.log("HotpepperAPI 失敗");
-                    console.log(error);
-                    changeModalState("情報が取得できませんでした。", false, true);
-                    rejecte();
-                });
-        })
+        const requestUrl: string = `https://express-search-shop.onrender.com/api/shopList?lat=${hotpepper_lat}&lng=${hotpepper_lng}&shopGenre=${hotpepper_genre}`;
+        fetch(requestUrl)
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                const responseShopList: TypeShopList[] = data;
+                setShoplist((prevState) => [...prevState, ...responseShopList]);
+                if (responseShopList.length === 0) {
+                    changeModalState("検索結果なし", false, true);
+                }
+                else {
+                    changeModalState("", false, true);
+                }
+                sessionStorage.setItem("shopListStorage", JSON.stringify(responseShopList));
+            })
+            .catch(error => {
+                // handle error
+                console.log("HotpepperAPI 失敗");
+                console.log(error);
+                changeModalState("情報が取得できませんでした。", false, true);
+            });
     }
 
 

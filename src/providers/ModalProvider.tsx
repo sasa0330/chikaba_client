@@ -2,7 +2,7 @@
  * モーダル関連のステート・関数をグローバルに使うためのプロバイダー
  */
 import { createContext, useState } from 'react'
-import { modalStateType } from "../type/modalState"
+import { TypeModalState } from "../type/modalState"
 
 type Props = {
     children: any
@@ -17,7 +17,7 @@ type Props = {
 export const ModalContext = createContext(
     {} as
     {
-        modalState: modalStateType;
+        modalState: TypeModalState;
         setModalState: Function;
         changeModalState: Function;
     }
@@ -31,7 +31,7 @@ export const ModalProvider = (props: Props) => {
     /**
      * モーダルの状態を管理するステート
      */
-    const [modalState, setModalState] = useState<modalStateType>({
+    const [modalState, setModalState] = useState<TypeModalState>({
         "text": "",
         "isLoading": false,
         "isPossibleClose": false

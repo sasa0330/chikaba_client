@@ -11,7 +11,7 @@ type Props = {
 
 export const SelectGenre = (props: Props) => {
     const { setGenreSelectbox } = props;
-    const [currentIndex, setCurrentIndex] = useState<number>(0);
+    const [currentIndex, setCurrentIndex] = useState<number>(100);//初期値を0にするとレンダリング時にジャンル選択状態のCSSが当たる
     const HOTPEPPR_GENRE_ARR = [
         {
             "code": "G001",

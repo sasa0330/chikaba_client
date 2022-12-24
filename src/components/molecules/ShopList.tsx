@@ -3,52 +3,22 @@
  */
 
 import React from 'react';
-import { shopListType } from '../../type/shopList';
-import axios from 'axios';
+import { TypeShopList } from '../../type/shopList';
 import { Link } from "react-router-dom";
 
-type Props = shopListType;
+type Props = TypeShopList;
 
 export const ShopList = (props: Props) => {
     const { itemId, photoPcM, shopName, lunch, budgetName, address } = props;
-    const env = process.env;
 
-
-
-    const getShopDetail = (thisKey: string) => {
-        const requestUrl = `${env.REACT_APP_PROXY_SERVER_URL}${env.REACT_APP_HOTPEPPER_BASE_URL}?key=${env.REACT_APP_HOTPEPPER_API_KEY}&id=${thisKey}&format=json`;
-        console.log(requestUrl);
-        axios.get(requestUrl)
-            .then(function (response) {
-                // handle success
-                //メモ
-                //mapとかで一つ一つデータを格納するときは、その中でsetStateすると無駄に再描画する
-                //ので、一回配列とかにしちゃうのが良さそう
-                const responseShopList: Array<shopListType> = response.data.results.shop.map((item: any) => (
-                    {
-                        key: item.id,
-                        photoPcM: item.photo.pc.m,
-                        shopName: item.name,
-                        lunch: item.lunch,
-                        budgetName: item.budget.name,
-                        address: item.address
-                    }
-                ));
-                console.log(responseShopList);
-            })
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            })
-            .finally(function () {
-                // always
-
-            });
+    const getShopDetail = (itemId: string, shopName: string, address: string) => {
+        console.log(itemId);
+        console.log(shopName);
+        console.log(address);
     }
-
     return (
         <React.Fragment key={itemId}>
-            <li className="shopList__item" onClick={() => getShopDetail(String(getShopDetail))}>
+            <li className="shopList__item" onClick={() => getShopDetail(itemId, shopName, address)}>
                 <Link to='/detail' className="shopList__link">
                     <div className="shopList__img">
                         <img src={photoPcM} alt={shopName} />
@@ -64,7 +34,7 @@ export const ShopList = (props: Props) => {
                 </Link>
             </li>
 
-        </React.Fragment>
+        </React.Fragment >
 
     )
 }

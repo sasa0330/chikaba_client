@@ -1,4 +1,4 @@
-export type shopListType = {
+export type TypeShopList = {
     itemId: string,
     photoPcM: string,
     shopName: string,

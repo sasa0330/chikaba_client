@@ -4,7 +4,7 @@
  * @type isLoading - モーダルにローディングアイコンを表示するか
  * @type isPossibleClose - ユーザーがモーダルを閉じられるようにするか
  */
-export type modalStateType = {
+export type TypeModalState = {
     text: string,
     isLoading: boolean,
     isPossibleClose: boolean
