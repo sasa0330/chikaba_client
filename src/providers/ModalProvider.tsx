@@ -44,8 +44,9 @@ export const ModalProvider = (props: Props) => {
      * @param isLoading - モーダルにローディングアイコンを表示するか
      * @param isPossibleClose - ユーザーがモーダルを閉じられるようにするか
      */
+
     const changeModalState = (text: string, isLoading: boolean, isPossibleClose: boolean) => {
-        const newModal = {
+        const newModal: TypeModalState = {
             "text": text,
             "isLoading": isLoading,
             "isPossibleClose": isPossibleClose

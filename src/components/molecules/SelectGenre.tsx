@@ -9,10 +9,16 @@ type Props = {
     setGenreSelectbox: Function;
 }
 
+
+type TypeGenle = {
+    code: string;
+    genre: string;
+}
+
 export const SelectGenre = (props: Props) => {
     const { setGenreSelectbox } = props;
     const [currentIndex, setCurrentIndex] = useState<number>(100);//初期値を0にするとレンダリング時にジャンル選択状態のCSSが当たる
-    const HOTPEPPR_GENRE_ARR = [
+    const HOTPEPPR_GENRE_ARR: TypeGenle[] = [
         {
             "code": "G001",
             "genre": "居酒屋"
@@ -87,9 +93,8 @@ export const SelectGenre = (props: Props) => {
     //参考：https://zenn.dev/koduki/articles/0f8fcbc9a7485b
 
     const changeGenreSelect = (targetCode: string, index: number) => {
-        const genreCode = targetCode;
         for (let item of HOTPEPPR_GENRE_ARR) {
-            if (genreCode === item.code) {
+            if (targetCode === item.code) {
                 console.log(`コード変わった：${item.code}${item.genre}`)
                 setGenreSelectbox(item);
                 setCurrentIndex(index);
@@ -98,27 +103,23 @@ export const SelectGenre = (props: Props) => {
     }
     return (
         <>
-            <div>
-                <div className="selectGenre">
-                    <div className="selectGenre__list">
-                        {
-                            HOTPEPPR_GENRE_ARR.map((genreitem, index) => {
-                                let badgeClassName: string = "";
-                                if (currentIndex === index) {
-                                    badgeClassName += " badge__genre--selected";
-                                }
-                                return (
-                                    <React.Fragment key={index}>
-                                        <Badge thisOnClick={() => changeGenreSelect(genreitem.code, index)} thisValue={genreitem.genre} thisClassName={badgeClassName}></Badge>
-                                    </React.Fragment>
-                                )
-                            })
-                        }
-                    </div>
+            <div className="selectGenre">
+                <div className="selectGenre__list">
+                    {
+                        HOTPEPPR_GENRE_ARR.map((genreitem, index) => {
+                            let badgeClassName: string = "";
+                            if (currentIndex === index) {
+                                badgeClassName += " badge__genre--selected";
+                            }
+                            return (
+                                <React.Fragment key={index}>
+                                    <Badge thisOnClick={() => changeGenreSelect(genreitem.code, index)} thisValue={genreitem.genre} thisClassName={badgeClassName}></Badge>
+                                </React.Fragment>
+                            )
+                        })
+                    }
                 </div>
             </div>
         </>
-
     )
-
 }
