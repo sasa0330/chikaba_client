@@ -1,16 +1,16 @@
 /**
  * 店舗検索部分
  */
-
+import React from 'react';
 import { SelectGenre } from './SelectGenre';
 
 //メモ
 //この辺りのpropsってグローバルにできそうだけどむずい
-type Props = {
+interface PropsType {
     setGenreSelectbox: Function;
 }
 
-export const ShopSearch = (props: Props) => {
+export const ShopSearch: React.FC<PropsType> = (props) => {
     const { setGenreSelectbox } = props;
     return (
         <>

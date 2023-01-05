@@ -4,9 +4,10 @@
 
 import { useState, useEffect, useContext } from 'react';
 import { ShopList } from '../molecules/ShopList';
-import { TypeShopList } from '../../type/shopList';
+import { TypeShopList } from '../../type/globalTypes';
 import { ShopSearch } from '../molecules/ShopSearch';
 import { ModalContext } from '../../providers/ModalProvider';
+import { ShopListContext } from '../../providers/ShopListProvider';
 
 
 type TypeGenle = {
@@ -16,8 +17,9 @@ type TypeGenle = {
 
 export const List = () => {
     const { changeModalState } = useContext(ModalContext);
+    const { shopList, setShopList } = useContext(ShopListContext);
+
     const [genreSelectbox, setGenreSelectbox] = useState<TypeGenle>({ "code": "", "genre": "" });
-    const [shopList, setShoplist] = useState<TypeShopList[]>([]);
 
     let hotpepper_lat: number;
     let hotpepper_lng: number;
@@ -36,7 +38,7 @@ export const List = () => {
      */
     const changeShopList = async () => {
         //店情報初期化
-        setShoplist([]);
+        setShopList([]);
         //検索中のローディング表示
         changeModalState("検索中…", true, false);
         //現在地取得
@@ -105,11 +107,11 @@ export const List = () => {
 
         const requestUrl: string = `https://express-search-shop.onrender.com/api/shopList?lat=${hotpepper_lat}&lng=${hotpepper_lng}&shopGenre=${hotpepper_genre}`;
         try {
-            const response = await fetch(requestUrl);
-            const data = await response.json();
-            console.log("HotpepperAPI then data");
+            const response: any = await fetch(requestUrl);
+            const data: TypeShopList[] = await response.json();
+
             const responseShopList: TypeShopList[] = data;
-            setShoplist((prevState) => [...prevState, ...responseShopList]);
+            setShopList((prevState: TypeShopList[]) => [...prevState, ...responseShopList]);
             if (responseShopList.length === 0) {
                 changeModalState("検索結果なし", false, true);
             }
@@ -130,15 +132,19 @@ export const List = () => {
     return (
         <>
             <ShopSearch setGenreSelectbox={setGenreSelectbox} />
-            <ul className="shopList">
-                {
-                    shopList.map((shop) => {
-                        return (
-                            <ShopList itemId={shop.itemId} photoPcM={shop.photoPcM} shopName={shop.shopName} lunch={shop.lunch} budgetName={shop.budgetName} address={shop.address} />
-                        )
-                    })
-                }
-            </ul>
+            {
+                shopList.length > 0 ? (
+                    <ul className="shopList">
+                        {
+                            shopList.map((shop) => {
+                                return (
+                                    <ShopList itemId={shop.itemId} photoPcM={shop.photoPcM} shopName={shop.shopName} lunch={shop.lunch} budgetName={shop.budgetName} address={shop.address} />
+                                )
+                            })
+                        }
+                    </ul>
+                ) : null
+            }
         </>
     )
 }

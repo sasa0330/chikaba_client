@@ -2,7 +2,7 @@
  * モーダル関連のステート・関数をグローバルに使うためのプロバイダー
  */
 import { createContext, useState } from 'react'
-import { TypeShopList } from '../type/shopList';
+import { TypeShopList } from '../type/globalTypes';
 
 type Props = {
     children: any
@@ -17,32 +17,28 @@ type Props = {
 export const ShopListContext = createContext(
     {} as
     {
-        shopList: TypeShopList;
-        setshopList: Function;
+        shopList: TypeShopList[];
+        setShopList: Function;
+        currentItemId: string;
+        setCurrentItemId: Function;
     }
 );
 
 /**
- * モーダル用のProveider
+ * 店舗リスト用のProveider
  */
 export const ShopListProvider = (props: Props) => {
 
     /**
      * 取得した店舗情報を保持するステート
      */
-    const [shopList, setshopList] = useState<TypeShopList>({
-        "itemId": "",
-        "photoPcM": "",
-        "shopName": "",
-        "lunch": "",
-        "budgetName": "",
-        "address": "",
-    });
+    const [shopList, setShopList] = useState<TypeShopList[]>([]);
+    const [currentItemId, setCurrentItemId] = useState<string>("");
 
 
     return (
         <>
-            <ShopListContext.Provider value={{ shopList, setshopList }}>
+            <ShopListContext.Provider value={{ shopList, setShopList, currentItemId, setCurrentItemId }}>
                 {props.children}
             </ShopListContext.Provider>
         </>

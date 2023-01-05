@@ -2,7 +2,7 @@
  * モーダル関連のステート・関数をグローバルに使うためのプロバイダー
  */
 import { createContext, useState } from 'react'
-import { TypeModalState } from "../type/modalState"
+import { TypeModalState } from "../type/globalTypes"
 
 type Props = {
     children: any
@@ -32,7 +32,7 @@ export const ModalProvider = (props: Props) => {
      * モーダルの状態を管理するステート
      */
     const [modalState, setModalState] = useState<TypeModalState>({
-        "text": "",
+        "message": "",
         "isLoading": false,
         "isPossibleClose": false
     });
@@ -45,9 +45,9 @@ export const ModalProvider = (props: Props) => {
      * @param isPossibleClose - ユーザーがモーダルを閉じられるようにするか
      */
 
-    const changeModalState = (text: string, isLoading: boolean, isPossibleClose: boolean) => {
+    const changeModalState = (message: string, isLoading: boolean, isPossibleClose: boolean) => {
         const newModal: TypeModalState = {
-            "text": text,
+            "message": message,
             "isLoading": isLoading,
             "isPossibleClose": isPossibleClose
         }

@@ -2,24 +2,22 @@
  * 検索結果店一覧
  */
 
-import React from 'react';
-import { TypeShopList } from '../../type/shopList';
+import React, { useContext } from 'react';
+import { TypeShopList } from '../../type/globalTypes';
 import { Link } from "react-router-dom";
+import { ShopListContext } from '../../providers/ShopListProvider';
 
-type Props = TypeShopList;
-
-export const ShopList = (props: Props) => {
+export const ShopList: React.FC<TypeShopList> = (props) => {
     const { itemId, photoPcM, shopName, lunch, budgetName, address } = props;
+    const { setCurrentItemId } = useContext(ShopListContext);
 
-    const getShopDetail = (itemId: string, shopName: string, address: string) => {
-        console.log(itemId);
-        console.log(shopName);
-        console.log(address);
+    const getShopDetail = (itemId: string) => {
+        setCurrentItemId(itemId);
     }
     return (
         <React.Fragment key={itemId}>
-            <li className="shopList__item" onClick={() => getShopDetail(itemId, shopName, address)}>
-                <Link to='/detail' className="shopList__link">
+            <li className="shopList__item" onClick={() => getShopDetail(itemId)}>
+                <Link to={`/detail/${itemId}`} className="shopList__link">
                     <div className="shopList__img">
                         <img src={photoPcM} alt={shopName} />
                     </div>
@@ -33,8 +31,6 @@ export const ShopList = (props: Props) => {
                     </div>
                 </Link>
             </li>
-
         </React.Fragment >
-
     )
 }

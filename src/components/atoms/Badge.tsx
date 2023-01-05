@@ -1,7 +1,9 @@
 /*
 * バッジコンポーネント
 */
-type Props = {
+import React from "react";
+
+interface PropsType {
     //バッジをクリックした時のfuntion
     thisOnClick: VoidFunction;
     //バッジのテキスト
@@ -10,7 +12,7 @@ type Props = {
     thisClassName: string;
 }
 
-export const Badge = (props: Props) => {
+export const Badge: React.FC<PropsType> = (props) => {
     const { thisOnClick, thisValue, thisClassName } = props;
     return (
         <>

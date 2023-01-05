@@ -12,14 +12,14 @@ export const MesageModal = () => {
         <>
             {
 
-                modalState.text !== "" ? (
+                modalState.message !== "" ? (
                     <>
                         <div className="modal">
                             <div className="modal__search">
                                 <div className="modal__loadingIcon">
                                     <div className="loader"></div>
                                 </div>
-                                <div className="modal__loadingText">{modalState.text}</div>
+                                <div className="modal__loadingText">{modalState.message}</div>
                             </div>
 
                             <ModalCancelButton />
