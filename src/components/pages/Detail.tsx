@@ -1,7 +1,7 @@
 /**
  * 詳細画面
  */
-import { useState, useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { ShopListContext } from '../../providers/ShopListProvider';
 
@@ -12,7 +12,7 @@ export const Detail = () => {
     return (
         <>
             {
-                shopList.map((shop) => {
+                shopList.forEach((shop) => {
                     if (shop.itemId === itemId) {
                         console.log("取得できた！");
                         return (

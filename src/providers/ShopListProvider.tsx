@@ -9,10 +9,7 @@ type Props = {
 }
 
 /**
- * モーダル用のContext
- * ここでstateとsetStateを定義してあげる。
- * 定義するときはcreateContext()を使う。
- * createContext()のデフォルトの型が{}なので、stateとsetStateの型を明示的に決めてあげないとエラーになる。
+ * 取得する店情報の一覧
  */
 export const ShopListContext = createContext(
     {} as

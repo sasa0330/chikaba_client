@@ -106,6 +106,7 @@ export const List = () => {
     const getShopList = async () => {
 
         const requestUrl: string = `https://express-search-shop.onrender.com/api/shopList?lat=${hotpepper_lat}&lng=${hotpepper_lng}&shopGenre=${hotpepper_genre}`;
+        //const requestUrl: string = `http://localhost:3001/api/shopList?lat=${hotpepper_lat}&lng=${hotpepper_lng}&shopGenre=${hotpepper_genre}`;
         try {
             const response: any = await fetch(requestUrl);
             const data: TypeShopList[] = await response.json();
