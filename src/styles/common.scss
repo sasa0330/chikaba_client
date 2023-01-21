@@ -213,6 +213,11 @@ footer {
         border: solid 1px #000;
         margin-bottom: 5vw;
         cursor: pointer;
+        box-shadow: 1px 1px 1px 1px rgb(0 0 0 / 50%);
+
+        &:hover {
+            box-shadow: none;
+        }
     }
 
     &__genre--selected {

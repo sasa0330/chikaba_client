@@ -103,30 +103,31 @@ export const List = () => {
     }
 
     //店一覧の取得
-    const getShopList = async () => {
+    const getShopList: () => Promise<void>
+        = async () => {
 
-        const requestUrl: string = `https://express-search-shop.onrender.com/api/shopList?lat=${hotpepper_lat}&lng=${hotpepper_lng}&shopGenre=${hotpepper_genre}`;
-        //const requestUrl: string = `http://localhost:3001/api/shopList?lat=${hotpepper_lat}&lng=${hotpepper_lng}&shopGenre=${hotpepper_genre}`;
-        try {
-            const response: any = await fetch(requestUrl);
-            const data: TypeShopList[] = await response.json();
+            const requestUrl: string = `https://express-search-shop.onrender.com/api/shopList?lat=${hotpepper_lat}&lng=${hotpepper_lng}&shopGenre=${hotpepper_genre}`;
+            //const requestUrl: string = `http://localhost:3001/api/shopList?lat=${hotpepper_lat}&lng=${hotpepper_lng}&shopGenre=${hotpepper_genre}`;
+            try {
+                const response: any = await fetch(requestUrl);
+                const data: TypeShopList[] = await response.json();
 
-            const responseShopList: TypeShopList[] = data;
-            setShopList((prevState: TypeShopList[]) => [...prevState, ...responseShopList]);
-            if (responseShopList.length === 0) {
-                changeModalState("検索結果なし", false, true);
+                const responseShopList: TypeShopList[] = data;
+                setShopList((prevState: TypeShopList[]) => [...prevState, ...responseShopList]);
+                if (responseShopList.length === 0) {
+                    changeModalState("検索結果なし", false, true);
+                }
+                else {
+                    changeModalState("", false, true);
+                }
+                sessionStorage.setItem("shopListStorage", JSON.stringify(responseShopList));
+            } catch (error) {
+                // handle error
+                console.log("HotpepperAPI 失敗");
+                console.log(error);
+                changeModalState("情報が取得できませんでした。", false, true);
             }
-            else {
-                changeModalState("", false, true);
-            }
-            sessionStorage.setItem("shopListStorage", JSON.stringify(responseShopList));
-        } catch (error) {
-            // handle error
-            console.log("HotpepperAPI 失敗");
-            console.log(error);
-            changeModalState("情報が取得できませんでした。", false, true);
         }
-    }
 
 
 
