@@ -8,12 +8,7 @@ import { TypeShopList } from '../../type/globalTypes';
 import { ShopSearch } from '../molecules/ShopSearch';
 import { ModalContext } from '../../providers/ModalProvider';
 import { ShopListContext } from '../../providers/ShopListProvider';
-
-
-type TypeGenle = {
-    code: string;
-    genre: string;
-}
+import { TypeGenle } from "../../type/globalTypes";
 
 export const List = () => {
     const { changeModalState } = useContext(ModalContext);
@@ -113,10 +108,7 @@ export const List = () => {
 
                 const responseShopList: TypeShopList[] = data;
                 setShopList((prevState: TypeShopList[]) => [...prevState, ...responseShopList]);
-                if (responseShopList.length === 0) {
-                    changeModalState("検索結果なし", false, true);
-                }
-                else {
+                if (responseShopList.length) {
                     changeModalState("", false, true);
                 }
                 sessionStorage.setItem("shopListStorage", JSON.stringify(responseShopList));
@@ -144,7 +136,9 @@ export const List = () => {
                             })
                         }
                     </ul>
-                ) : null
+                ) : (
+                    <div>検索結果なし</div>
+                )
             }
         </>
     )

@@ -34,3 +34,8 @@ export type TypeShopList = {
     freeDrink?: string
 }
 
+
+export type TypeGenle = {
+    code: string;
+    genre: string;
+}

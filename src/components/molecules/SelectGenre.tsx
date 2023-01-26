@@ -3,16 +3,11 @@
  */
 
 import React, { useState } from 'react';
-import { Badge } from '../atoms/Badge'
+import { Badge } from '../atoms/Badge';
+import { TypeGenle } from "../../type/globalTypes";
 
 type Props = {
     setGenreSelectbox: Function;
-}
-
-
-type TypeGenle = {
-    code: string;
-    genre: string;
 }
 
 export const SelectGenre = (props: Props) => {
