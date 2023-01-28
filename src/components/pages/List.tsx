@@ -3,22 +3,30 @@
  */
 
 import { useState, useEffect, useContext } from 'react';
-import { ShopList } from '../molecules/ShopList';
-import { TypeShopList } from '../../type/globalTypes';
-import { ShopSearch } from '../molecules/ShopSearch';
+import { ShopListSearchResult } from '../molecules/ShopListSearchResult';
+import { SelectGenre } from '../molecules/SelectGenre';
 import { ModalContext } from '../../providers/ModalProvider';
 import { ShopListContext } from '../../providers/ShopListProvider';
+import { CircleButton } from '../atoms/CircleButton';
+import { TypeShopList } from '../../type/globalTypes';
 import { TypeGenle } from "../../type/globalTypes";
 
 export const List = () => {
     const { changeModalState } = useContext(ModalContext);
     const { shopList, setShopList } = useContext(ShopListContext);
 
+
     const [genreSelectbox, setGenreSelectbox] = useState<TypeGenle>({ "code": "", "genre": "" });
+    const [showShopListSearchResult, setShowShopListSearchResult] = useState(false);
 
     let hotpepper_lat: number;
     let hotpepper_lng: number;
     const hotpepper_genre: string = genreSelectbox.code !== "" ? genreSelectbox.code : "";
+
+    const hideShopListSearchResult = (): void => {
+        setShowShopListSearchResult(false);
+        console.log("ddd");
+    }
 
     useEffect(() => {
         if (hotpepper_genre) {
@@ -100,7 +108,6 @@ export const List = () => {
     //店一覧の取得
     const getShopList: () => Promise<void>
         = async () => {
-
             const requestUrl: string = `https://express-search-shop.onrender.com/api/shopList?lat=${hotpepper_lat}&lng=${hotpepper_lng}&shopGenre=${hotpepper_genre}`;
             console.log(requestUrl);
             try {
@@ -113,6 +120,7 @@ export const List = () => {
                     changeModalState("", false, true);
                 }
                 sessionStorage.setItem("shopListStorage", JSON.stringify(responseShopList));
+                setShowShopListSearchResult(true);
             } catch (error) {
                 // handle error
                 console.log("HotpepperAPI 失敗");
@@ -120,27 +128,26 @@ export const List = () => {
                 changeModalState("情報が取得できませんでした。", false, true);
             }
         }
-
-
-
     return (
         <>
-            <ShopSearch setGenreSelectbox={setGenreSelectbox} />
+            <SelectGenre setGenreSelectbox={setGenreSelectbox}></SelectGenre>
             {
-                shopList.length > 0 ? (
-                    <ul className="shopList">
-                        {
-                            shopList.map((shop) => {
-                                return (
-                                    <ShopList itemId={shop.itemId} photoPcM={shop.photoPcM} shopName={shop.shopName} lunch={shop.lunch} budgetName={shop.budgetName} address={shop.address} />
-                                )
-                            })
-                        }
-                    </ul>
-                ) : (
-                    <div>検索結果なし</div>
-                )
+                showShopListSearchResult ?
+                    <div className="serchResultLayer"></div>
+                    : null
             }
+            {
+                <div className={`serchResult ${showShopListSearchResult ? "isActive" : ""}`}>
+                    <ShopListSearchResult shopList={shopList}></ShopListSearchResult>
+                </div>
+
+            }
+            {
+                showShopListSearchResult ?
+                    <CircleButton onClick={hideShopListSearchResult} className="buttonHideSearchResult">×</CircleButton>
+                    : null
+            }
+
         </>
     )
 }

@@ -7,7 +7,7 @@ import { TypeShopList } from '../../type/globalTypes';
 import { Link } from "react-router-dom";
 import { ShopListContext } from '../../providers/ShopListProvider';
 
-export const ShopList: React.FC<TypeShopList> = (props) => {
+export const ShopListItem: React.FC<TypeShopList> = (props) => {
     const { itemId, photoPcM, shopName, lunch, budgetName, address } = props;
     const { setCurrentItemId } = useContext(ShopListContext);
 
