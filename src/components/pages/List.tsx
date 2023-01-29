@@ -133,7 +133,7 @@ export const List = () => {
             <SelectGenre setGenreSelectbox={setGenreSelectbox}></SelectGenre>
             {
                 showShopListSearchResult ?
-                    <div className="serchResultLayer"></div>
+                    <div className="serchResultLayer" onClick={hideShopListSearchResult}></div>
                     : null
             }
             {
