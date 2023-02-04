@@ -36,17 +36,6 @@ export type TypeShopList = {
 
 
 export type TypeGenle = {
-    code: string;
+    code: "G001" | "G002" | "G003" | "G004" | "G005" | "G006" | "G007" | "G008" | "G009" | "G010" | "G011" | "G012" | "G013" | "G014" | "G015" | "G016" | "G017";
     genre: string;
-}
-
-//イベントの型
-export type EventTypes = {
-    onClick: (event: React.MouseEvent<HTMLInputElement>) => void
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-    onkeypress: (event: React.KeyboardEvent<HTMLInputElement>) => void
-    onBlur: (event: React.FocusEvent<HTMLInputElement>) => void
-    onFocus: (event: React.FocusEvent<HTMLInputElement>) => void
-    onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
-    onClickDiv: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }

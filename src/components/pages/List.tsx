@@ -15,9 +15,15 @@ export const List = () => {
     const { changeModalState } = useContext(ModalContext);
     const { shopList, setShopList } = useContext(ShopListContext);
 
-
-    const [genreSelectbox, setGenreSelectbox] = useState<TypeGenle>({ "code": "", "genre": "" });
-    const [showShopListSearchResult, setShowShopListSearchResult] = useState(false);
+    type UseStateGenreSelectbox = TypeGenle | {
+        "code": "",
+        "genre": ""
+    };
+    const [genreSelectbox, setGenreSelectbox] = useState<UseStateGenreSelectbox>({
+        "code": "",
+        "genre": ""
+    });
+    const [showShopListSearchResult, setShowShopListSearchResult] = useState<boolean>(false);
 
     let hotpepper_lat: number;
     let hotpepper_lng: number;
@@ -57,7 +63,7 @@ export const List = () => {
     /**
      * 現在地を取得する処理 
      */
-    const getCurrentLocation = () => {
+    const getCurrentLocation: () => Promise<void> = () => {
         return new Promise(function (resolve: any, rejecte: any) {
             if (!navigator.geolocation) {
                 // Geolocation APIに対応していない場合
@@ -105,14 +111,26 @@ export const List = () => {
         })
     }
 
+    /**
+     * ホットペッパーAPIに投げるURLを作成する関数
+     * @param lat - 緯度
+     * @param lng - 経度
+     * @param genre - ジャンルコード
+     * @returns - 引数をもとにした周辺の店情報URL
+     */
+    const generateRequestHotpepperUrl: (lat: number, lng: number, genre: string) => string
+        = (lat: number, lng: number, genre: string) => {
+            return `https://express-search-shop.onrender.com/api/shopList?lat=${lat}&lng=${lng}&shopGenre=${genre}`;
+        }
     //店一覧の取得
     const getShopList: () => Promise<void>
         = async () => {
-            const requestUrl: string = `https://express-search-shop.onrender.com/api/shopList?lat=${hotpepper_lat}&lng=${hotpepper_lng}&shopGenre=${hotpepper_genre}`;
+            const requestUrl: string = generateRequestHotpepperUrl(hotpepper_lat, hotpepper_lng, hotpepper_genre);
             console.log(requestUrl);
             try {
                 const response: any = await fetch(requestUrl);
                 const data: TypeShopList[] = await response.json();
+                console.log("lplp");
 
                 const responseShopList: TypeShopList[] = data;
                 setShopList((prevState: TypeShopList[]) => [...prevState, ...responseShopList]);
