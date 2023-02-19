@@ -5,6 +5,24 @@
 import React, { useState } from "react";
 import { Badge } from "../atoms/Badge";
 import { TypeGenle } from "../../type/globalTypes";
+import { css } from "@emotion/css";
+const styles = {
+  selectGenre: css`
+    width: 100%;
+    overflow: scroll;
+    padding: 5px;
+  `,
+  list: css`
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    &:after {
+      content: "";
+      width: 28vw;
+    }
+  `,
+};
 
 type Props = {
   setGenreSelectbox: Function;
@@ -98,19 +116,17 @@ export const SelectGenre = (props: Props) => {
   };
   return (
     <>
-      <div className="selectGenre">
-        <div className="selectGenre__list">
+      <div className={styles.selectGenre}>
+        <div className={styles.list}>
           {HOTPEPPR_GENRE_ARR.map((genreitem, index) => {
-            let badgeClassName: string = "";
-            if (currentIndex === index) {
-              badgeClassName += " badge__genre--selected";
-            }
+            let isSelected: boolean = currentIndex === index;
+
             return (
               <React.Fragment key={index}>
                 <Badge
                   thisOnClick={() => changeGenreSelect(genreitem.code, index)}
                   thisValue={genreitem.genre}
-                  thisClassName={badgeClassName}
+                  thisSelected={isSelected}
                 ></Badge>
               </React.Fragment>
             );
