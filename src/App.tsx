@@ -12,7 +12,7 @@ export const App = () => {
     <>
       <ShopListProvider>
         <ModalProvider>
-          <div className="container">
+          <div className="container is-pc">
             <Header />
             <main>
               {
@@ -26,6 +26,10 @@ export const App = () => {
             </main>
             <Footer />
             <MesageModal />
+          </div>
+          <div className="container is-sp">
+            現在スマホ対応のみ🐧 <br />
+            600px以下まで横幅を縮めてください。
           </div>
         </ModalProvider>
       </ShopListProvider>
