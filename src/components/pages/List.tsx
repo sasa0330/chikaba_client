@@ -142,9 +142,11 @@ export const List = () => {
     );
     console.log(requestUrl);
     try {
+      console.log("fetch開始");
       const response: any = await fetch(requestUrl);
+      console.log("fetch実行済み");
       const data: TypeShopList[] = await response.json();
-      console.log("lplp");
+      console.log("fetch終了");
 
       const responseShopList: TypeShopList[] = data;
       setShopList((prevState: TypeShopList[]) => [
