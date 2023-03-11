@@ -5,24 +5,7 @@
 import React, { useState } from "react";
 import { Badge } from "../atoms/Badge";
 import { TypeGenle } from "../../type/globalTypes";
-import { css } from "@emotion/css";
-const styles = {
-  selectGenre: css`
-    width: 100%;
-    overflow: scroll;
-    padding: 5px;
-  `,
-  list: css`
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-
-    &:after {
-      content: "";
-      width: 28vw;
-    }
-  `,
-};
+import { SelectGenreStyle } from "./Style";
 
 type Props = {
   setGenreSelectbox: Function;
@@ -116,8 +99,8 @@ export const SelectGenre = (props: Props) => {
   };
   return (
     <>
-      <div className={styles.selectGenre}>
-        <div className={styles.list}>
+      <div className={SelectGenreStyle.selectGenre}>
+        <div className={SelectGenreStyle.list}>
           {HOTPEPPR_GENRE_ARR.map((genreitem, index) => {
             let isSelected: boolean = currentIndex === index;
 
