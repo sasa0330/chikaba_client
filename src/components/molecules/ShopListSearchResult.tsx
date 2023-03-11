@@ -14,6 +14,7 @@ export const ShopListSearchResult: FC<{ shopList: TypeShopList[] }> = (
           {shopList.map((shop) => {
             return (
               <ShopListItem
+                key={shop.itemId}
                 itemId={shop.itemId}
                 photoPcM={shop.photoPcM}
                 shopName={shop.shopName}

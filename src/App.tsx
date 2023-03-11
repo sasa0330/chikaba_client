@@ -1,6 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Header } from "./components/molecules/Header";
-import { Footer } from "./components/molecules/Footer";
 import { MesageModal } from "./components/molecules/MesageModal";
 import { List } from "./components/pages/List";
 import { Detail } from "./components/pages/Detail";
@@ -13,18 +11,12 @@ export const App = () => {
       <ShopListProvider>
         <ModalProvider>
           <div className="container is-pc">
-            <Header />
-            <main>
-              {
-                <BrowserRouter>
-                  <Routes>
-                    <Route path="/" element={<List />} />
-                    <Route path="/detail/:itemId" element={<Detail />} />
-                  </Routes>
-                </BrowserRouter>
-              }
-            </main>
-            <Footer />
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<List />} />
+                <Route path="/detail/:itemId" element={<Detail />} />
+              </Routes>
+            </BrowserRouter>
             <MesageModal />
           </div>
           <div className="container is-sp">
