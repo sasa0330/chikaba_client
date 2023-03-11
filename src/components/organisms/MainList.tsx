@@ -30,8 +30,8 @@ export const MainList = () => {
 
   let hotpepper_lat: number;
   let hotpepper_lng: number;
-  const hotpepper_genre: string =
-    genreSelectbox.code !== "" ? genreSelectbox.code : "";
+  const isGenreCodeBrank = genreSelectbox.code === "";
+  const hotpepper_genre: string = !isGenreCodeBrank ? genreSelectbox.code : "";
 
   const hideShopListSearchResult = (): void => {
     setShowShopListSearchResult(false);
@@ -131,7 +131,8 @@ export const MainList = () => {
     lng: number,
     genre: string
   ) => string = (lat: number, lng: number, genre: string) => {
-    return `https://express-search-shop.onrender.com/api/shopList?lat=${lat}&lng=${lng}&shopGenre=${genre}`;
+    const getParameter = `?lat=${lat}&lng=${lng}&shopGenre=${genre}`;
+    return `https://express-search-shop.onrender.com/api/shopList${getParameter}`;
   };
   //店一覧の取得
   const getShopList: () => Promise<void> = async () => {
