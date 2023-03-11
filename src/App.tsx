@@ -4,6 +4,7 @@ import { List } from "./components/pages/List";
 import { Detail } from "./components/pages/Detail";
 import { ModalProvider } from "./providers/ModalProvider";
 import { ShopListProvider } from "./providers/ShopListProvider";
+import "sanitize.css";
 
 export const App = () => {
   return (
