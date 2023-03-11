@@ -1,3 +1,25 @@
+# Note
+
+・飲食店検索アプリです。ざっくりした構成は以下の通り
+create-react-app
+typescript
+emotion：メインのスタイル
+scss：emotion に移行中
+mui：アイコンで使用
+
+詳細画面が作成中なので、まだ真っ白です。
+
+# ディレクトリ構成
+
+アトミックデザインっぽい構成にしています。
+components
+/atoms
+/molecules
+/organisms
+/pages
+
+各ディレクトリ下は、コンポーネント用ファイルと emotion スタイル用のファイルがあります。
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -44,18 +66,3 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-
-
-# Note
-cloneした後に必要なこと
-npm install
-
-
-
-
-このアプリの作りに関して
-・ホットペッパーAPIを使って飲食店情報を取得しています
-・基本的な構成はReact/TypeScript/SCSSです。
-・ゆるくアトミックデザインを採用しています。
-・TypeScriptはうまく使えているか分かりません。ゆるく使っています。
-・詳細画面も作りたいです。
