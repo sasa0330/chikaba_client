@@ -61,3 +61,36 @@ export const MessageModalStyle = {
     font-size: 20px;
   `,
 };
+
+export const ShopListItemStyle = {
+  item: css`
+    padding: 10px;
+    display: block;
+    border-bottom: solid 1px #000;
+  `,
+  link: css`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  `,
+  wrapImg: css`
+    width: 25vw;
+    height: 25vw;
+  `,
+  img: css`
+    width: 100%;
+    object-fit: contain;
+    aspect-ratio: 1;
+  `,
+  text: css`
+    width: 65%;
+  `,
+  title: css`
+    font-size: 14px;
+    margin-bottom: 10px;
+    font-weight: bold;
+  `,
+  dicription: css`
+    font-size: 12px;
+  `,
+};

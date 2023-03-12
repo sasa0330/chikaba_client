@@ -6,6 +6,7 @@ import React, { useContext } from "react";
 import { TypeShopList } from "../../type/globalTypes";
 import { Link } from "react-router-dom";
 import { ShopListContext } from "../../providers/ShopListProvider";
+import { ShopListItemStyle } from "./Style";
 
 export const ShopListItem: React.FC<TypeShopList> = (props) => {
   const { itemId, photoPcM, shopName, lunch, budgetName, address } = props;
@@ -16,18 +17,25 @@ export const ShopListItem: React.FC<TypeShopList> = (props) => {
   };
   return (
     <React.Fragment key={itemId}>
-      <li className="shopList__item" onClick={() => getShopDetail(itemId)}>
-        <Link to={`/detail/${itemId}`} className="shopList__link">
-          <div className="shopList__img">
-            <img src={photoPcM} alt={shopName} />
+      <li
+        className={ShopListItemStyle.item}
+        onClick={() => getShopDetail(itemId)}
+      >
+        <Link to={`/detail/${itemId}`} className={ShopListItemStyle.link}>
+          <div className={ShopListItemStyle.wrapImg}>
+            <img
+              src={photoPcM}
+              alt={shopName}
+              className={ShopListItemStyle.img}
+            />
           </div>
-          <div className="shopList__text">
-            <h3 className="shopList__title">{shopName}</h3>
-            <ul className="shopList__discription">
-              <li>ランチ：{lunch}</li>
-              <li>ディナー：{budgetName}</li>
-              <li>{`${address}`}</li>
-            </ul>
+          <div className={ShopListItemStyle.text}>
+            <div className={ShopListItemStyle.title}>{shopName}</div>
+            <div className={ShopListItemStyle.dicription}>
+              <div>ランチ：{lunch}</div>
+              <div>ディナー：{budgetName}</div>
+              <div>{`${address}`}</div>
+            </div>
           </div>
         </Link>
       </li>
