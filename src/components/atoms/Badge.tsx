@@ -2,40 +2,7 @@
  * バッジコンポーネント
  */
 import React from "react";
-import { css } from "@emotion/css";
-const styles = {
-  badge: css`
-    display: block;
-    font-size: 13px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 28vw;
-    height: 18vw;
-    border: solid 1px #000;
-    margin-bottom: 5vw;
-    cursor: pointer;
-    box-shadow: 1px 1px 1px 1px rgb(0 0 0 / 50%);
-    padding: 10px;
-  `,
-  badgeSelected: css`
-    display: block;
-    font-size: 13px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 28vw;
-    height: 18vw;
-    border: solid 1px #000;
-    margin-bottom: 5vw;
-    cursor: pointer;
-    box-shadow: 1px 1px 1px 1px rgb(0 0 0 / 50%);
-    padding: 10px;
-    background-color: #ddd;
-  `,
-};
+import { BadgeStyle } from "./Style";
 
 interface PropsType {
   //バッジをクリックした時のfuntion
@@ -52,7 +19,7 @@ export const Badge: React.FC<PropsType> = (props) => {
       <div
         onClick={thisOnClick}
         //TODO：なんかここ動いてない。。
-        className={thisSelected ? styles.badgeSelected : styles.badge}
+        className={thisSelected ? BadgeStyle.badgeSelected : BadgeStyle.badge}
       >
         {thisValue}
       </div>

@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { ShopListItem } from "./ShopListItem";
 import { TypeShopList } from "../../type/globalTypes";
+import { ShopListSearchResultStyle } from "./Style";
 
 export const ShopListSearchResult: FC<{ shopList: TypeShopList[] }> = (
   props
@@ -10,7 +11,7 @@ export const ShopListSearchResult: FC<{ shopList: TypeShopList[] }> = (
   return (
     <>
       {shopList.length > 0 ? (
-        <ul className="shopList">
+        <ul className={ShopListSearchResultStyle.shopList}>
           {shopList.map((shop) => {
             return (
               <ShopListItem

@@ -7,7 +7,7 @@ import { ShopListSearchResult } from "../molecules/ShopListSearchResult";
 import { SelectGenre } from "../molecules/SelectGenre";
 import { ModalContext } from "../../providers/ModalProvider";
 import { ShopListContext } from "../../providers/ShopListProvider";
-import { CircleButton } from "../atoms/CircleButton";
+import { ButtonResultCancel } from "../atoms/ButtonResultCancel";
 import { TypeShopList } from "../../type/globalTypes";
 import { TypeGenle } from "../../type/globalTypes";
 
@@ -188,12 +188,9 @@ export const MainList = () => {
         </div>
       }
       {showShopListSearchResult ? (
-        <CircleButton
-          onClick={hideShopListSearchResult}
-          className="buttonHideSearchResult"
-        >
+        <ButtonResultCancel onClick={hideShopListSearchResult}>
           ×
-        </CircleButton>
+        </ButtonResultCancel>
       ) : null}
     </>
   );

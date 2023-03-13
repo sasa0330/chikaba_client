@@ -61,7 +61,11 @@ export const MessageModalStyle = {
     font-size: 20px;
   `,
 };
-
+export const ShopListSearchResultStyle = {
+  shopList: css`
+    margin-top: 30px;
+  `,
+};
 export const ShopListItemStyle = {
   item: css`
     padding: 10px;

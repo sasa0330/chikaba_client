@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ModalContext } from "../../providers/ModalProvider";
 
-export const ModalCancelButton = () => {
+export const ButtonModalClose = () => {
   const { modalState, changeModalState } = useContext(ModalContext);
   return (
     <>

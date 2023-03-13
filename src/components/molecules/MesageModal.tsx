@@ -3,7 +3,7 @@
  */
 
 import { useContext } from "react";
-import { ModalCancelButton } from "../atoms/ModalCancelButton";
+import { ButtonModalClose } from "../atoms/ButtonModalClose";
 import { ModalContext } from "../../providers/ModalProvider";
 import { MessageModalStyle } from "./Style";
 
@@ -24,7 +24,7 @@ export const MesageModal = () => {
               </div>
             </div>
 
-            <ModalCancelButton />
+            <ButtonModalClose />
           </div>
         </>
       ) : null}
