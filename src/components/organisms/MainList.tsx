@@ -25,6 +25,7 @@ export const MainList = () => {
     code: "",
     genre: "",
   });
+  //検索結果を表示するstate：true=表示
   const [showShopListSearchResult, setShowShopListSearchResult] =
     useState<boolean>(false);
 
@@ -42,6 +43,7 @@ export const MainList = () => {
     if (hotpepper_genre) {
       changeShopList();
     }
+
     //ESLintが「hotpepper_genreとchangeShopListの更新時もuseEffectしてよ」と注意してくる。無視する。
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [genreSelectbox]);

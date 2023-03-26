@@ -5,37 +5,54 @@
  * @type isPossibleClose - ユーザーがモーダルを閉じられるようにするか
  */
 export type TypeModalState = {
-    message: string,
-    isLoading: boolean,
-    isPossibleClose: boolean
-}
+  message: string;
+  isLoading: boolean;
+  isPossibleClose: boolean;
+};
 
 /**
  * 店舗リストの型
  */
 export type TypeShopList = {
-    // 店舗ID
-    itemId: string,
-    // メイン画像
-    photoPcM: string,
-    // 店名 
-    shopName: string,
-    //ランチがあるか
-    lunch: string,
-    //検索用ディナー予算
-    budgetName: string,
-    //住所
-    address: string,
-    //キャッチコピー
-    catch?: string,
-    //総席数（例：300）
-    capacity?: number
-    //飲み放題（例：あり）
-    freeDrink?: string
-}
-
+  // 店舗ID
+  itemId: string;
+  // メイン画像
+  photoPcM: string;
+  // 店名
+  shopName: string;
+  //ランチがあるか
+  lunch: string;
+  //検索用ディナー予算
+  budgetName: string;
+  //住所
+  address: string;
+  //キャッチコピー
+  catch?: string;
+  //総席数（例：300）
+  capacity?: number;
+  //飲み放題（例：あり）
+  freeDrink?: string;
+};
 
 export type TypeGenle = {
-    code: "G001" | "G002" | "G003" | "G004" | "G005" | "G006" | "G007" | "G008" | "G009" | "G010" | "G011" | "G012" | "G013" | "G014" | "G015" | "G016" | "G017";
-    genre: string;
-}
+  code:
+    | "G001"
+    | "G002"
+    | "G003"
+    | "G004"
+    | "G005"
+    | "G006"
+    | "G007"
+    | "G008"
+    | "G009"
+    | "G010"
+    | "G011"
+    | "G012"
+    | "G013"
+    | "G014"
+    | "G015"
+    | "G016"
+    | "G017";
+  icon?: JSX.Element | undefined;
+  genre: string;
+};

@@ -6,6 +6,12 @@ import React, { useState } from "react";
 import { Badge } from "../atoms/Badge";
 import { TypeGenle } from "../../type/globalTypes";
 import { SelectGenreStyle } from "./Style";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBeer,
+  faDrumstickBite,
+  faUtensils,
+} from "@fortawesome/free-solid-svg-icons";
 
 type Props = {
   setGenreSelectbox: Function;
@@ -17,18 +23,23 @@ export const SelectGenre = (props: Props) => {
   const HOTPEPPR_GENRE_ARR: TypeGenle[] = [
     {
       code: "G001",
-      genre: "居酒屋",
+      icon: <FontAwesomeIcon icon={faBeer} />,
+      genre: `居酒屋`,
     },
+    //G012と統合する
     {
       code: "G002",
-      genre: "ダイニングバー・バル",
+      icon: <FontAwesomeIcon icon={faDrumstickBite} />,
+      genre: "バー・バル",
     },
     {
       code: "G003",
+      icon: <FontAwesomeIcon icon={faUtensils} />,
       genre: "創作料理",
     },
     {
       code: "G004",
+      icon: <FontAwesomeIcon icon={faUtensils} />,
       genre: "和食",
     },
     {
@@ -37,7 +48,7 @@ export const SelectGenre = (props: Props) => {
     },
     {
       code: "G006",
-      genre: "イタリアン・フレンチ",
+      genre: "イタリアン<br>フレンチ",
     },
     {
       code: "G007",
@@ -45,11 +56,11 @@ export const SelectGenre = (props: Props) => {
     },
     {
       code: "G008",
-      genre: "焼肉・ホルモン",
+      genre: "焼肉",
     },
     {
       code: "G009",
-      genre: "アジア・エスニック料理",
+      genre: "アジア<br>エスニック",
     },
     {
       code: "G010",
@@ -57,11 +68,11 @@ export const SelectGenre = (props: Props) => {
     },
     {
       code: "G011",
-      genre: "カラオケ・パーティ",
+      genre: "カラオケ",
     },
     {
       code: "G012",
-      genre: "バー・カクテル",
+      genre: "カクテルバー",
     },
     {
       code: "G013",
@@ -69,19 +80,19 @@ export const SelectGenre = (props: Props) => {
     },
     {
       code: "G014",
-      genre: "カフェ・スイーツ",
-    },
-    {
-      code: "G015",
-      genre: "その他グルメ",
+      genre: "カフェ<br>スイーツ",
     },
     {
       code: "G016",
-      genre: "お好み焼き・もんじゃ",
+      genre: "お好み焼き<br>もんじゃ",
     },
     {
       code: "G017",
       genre: "韓国料理",
+    },
+    {
+      code: "G015",
+      genre: "その他グルメ",
     },
   ];
   //メモ
@@ -110,6 +121,7 @@ export const SelectGenre = (props: Props) => {
                   thisOnClick={() => changeGenreSelect(genreitem.code, index)}
                   thisValue={genreitem.genre}
                   thisSelected={isSelected}
+                  thisIcon={genreitem.icon}
                 ></Badge>
               </React.Fragment>
             );

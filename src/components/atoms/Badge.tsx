@@ -11,9 +11,10 @@ interface PropsType {
   thisValue: string;
   //基本のバッジスタイル以外のスタイル
   thisSelected: boolean;
+  thisIcon: JSX.Element | undefined;
 }
 export const Badge: React.FC<PropsType> = (props) => {
-  const { thisOnClick, thisValue, thisSelected } = props;
+  const { thisOnClick, thisValue, thisSelected, thisIcon } = props;
   return (
     <>
       <div
@@ -21,7 +22,8 @@ export const Badge: React.FC<PropsType> = (props) => {
         //TODO：なんかここ動いてない。。
         className={thisSelected ? BadgeStyle.badgeSelected : BadgeStyle.badge}
       >
-        {thisValue}
+        <div>{thisIcon}</div>
+        <div dangerouslySetInnerHTML={{ __html: thisValue }}></div>
       </div>
     </>
   );

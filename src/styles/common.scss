@@ -120,14 +120,13 @@ footer {
   top: 100vh;
   background: #fff;
   overflow: scroll;
-  border-radius: 20px;
   border: solid 1px #000;
   padding-bottom: 30px;
   transition: 0.3s;
   z-index: 1;
 
   &.isActive {
-    top: 3vh;
+    top: 0vh;
   }
 }
 

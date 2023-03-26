@@ -8,7 +8,7 @@ import { css } from "@emotion/css";
 const style = {
   img: css`
     text-align: center;
-    margin-bottom: 20px;
+    margin: 20px 0;
   `,
   shopName: css`
     font-size: 30px;

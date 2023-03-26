@@ -69,10 +69,12 @@ export const ShopListSearchResultStyle = {
 export const ShopListItemStyle = {
   item: css`
     padding: 10px;
-    display: block;
-    border-bottom: solid 1px #000;
+    border: solid 1px #000;
+    border-radius: 5px;
+    margin: 0 10px 10px 10px;
   `,
   link: css`
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
