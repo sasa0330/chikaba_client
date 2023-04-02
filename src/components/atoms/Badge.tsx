@@ -1,30 +1,37 @@
 /*
  * バッジコンポーネント
  */
-import React from "react";
+import React, { useContext } from "react";
 import { BadgeStyle } from "./Style";
+import { SearchStateContext } from "../../providers/GlobalProviders";
 
 interface PropsType {
   //バッジをクリックした時のfuntion
-  thisOnClick: VoidFunction;
+  genreCode?: string;
   //バッジのテキスト
-  thisValue: string;
+  value: string;
   //基本のバッジスタイル以外のスタイル
-  thisSelected: boolean;
-  thisIcon: JSX.Element | undefined;
+  icon: JSX.Element | undefined;
+  //検索中か
+  isSearching: boolean;
+  onClickHandler: (e: any) => Promise<void>;
 }
+
 export const Badge: React.FC<PropsType> = (props) => {
-  const { thisOnClick, thisValue, thisSelected, thisIcon } = props;
+  const { genreCode, value, icon, isSearching, onClickHandler } = props;
   return (
     <>
-      <div
-        onClick={thisOnClick}
-        //TODO：なんかここ動いてない。。
-        className={thisSelected ? BadgeStyle.badgeSelected : BadgeStyle.badge}
+      <button
+        onClick={onClickHandler}
+        className={isSearching ? BadgeStyle.badgeSearching : BadgeStyle.badge}
+        data-genre-code={genreCode}
       >
-        <div>{thisIcon}</div>
-        <div dangerouslySetInnerHTML={{ __html: thisValue }}></div>
-      </div>
+        <div className={BadgeStyle.svg}>{icon}</div>
+        <div
+          className={BadgeStyle.text}
+          dangerouslySetInnerHTML={{ __html: value }}
+        ></div>
+      </button>
     </>
   );
 };

@@ -2,31 +2,32 @@
  * ジャンル選択バッジボタン
  */
 
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Badge } from "../atoms/Badge";
 import { TypeGenle } from "../../type/globalTypes";
+import { Loading } from "../atoms/Loading";
 import { SelectGenreStyle } from "./Style";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { SearchStateContext } from "../../providers/GlobalProviders";
 import {
   faBeer,
-  faDrumstickBite,
-  faUtensils,
+  faMartiniGlass,
+  faSearch,
 } from "@fortawesome/free-solid-svg-icons";
-
 type Props = {
-  setGenreSelectbox: Function;
+  onClickHandler: (e: any) => Promise<void>;
 };
-
 export const SelectGenre = (props: Props) => {
-  const { setGenreSelectbox } = props;
-  const [currentIndex, setCurrentIndex] = useState<number>(100); //初期値を0にするとレンダリング時にジャンル選択状態のCSSが当たる
-  const HOTPEPPR_GENRE_ARR: TypeGenle[] = [
+  const { onClickHandler } = props;
+  const { isSearching } = useContext(SearchStateContext);
+  const hotpepperGenreArr: TypeGenle[] = [
     {
       code: "G001",
       icon: <FontAwesomeIcon icon={faBeer} />,
       genre: `居酒屋`,
     },
     //G012と統合する
+    /*
     {
       code: "G002",
       icon: <FontAwesomeIcon icon={faDrumstickBite} />,
@@ -70,10 +71,13 @@ export const SelectGenre = (props: Props) => {
       code: "G011",
       genre: "カラオケ",
     },
+    */
     {
       code: "G012",
+      icon: <FontAwesomeIcon icon={faMartiniGlass} />,
       genre: "カクテルバー",
     },
+    /*
     {
       code: "G013",
       genre: "ラーメン",
@@ -93,39 +97,40 @@ export const SelectGenre = (props: Props) => {
     {
       code: "G015",
       genre: "その他グルメ",
-    },
+    },*/
   ];
-  //メモ
-  //eventの型定義よくわからんので、以下の記事を参考に。
-  //参考：https://zenn.dev/koduki/articles/0f8fcbc9a7485b
 
-  const changeGenreSelect = (targetCode: string, index: number) => {
-    for (let item of HOTPEPPR_GENRE_ARR) {
-      if (targetCode === item.code) {
-        console.log(`コード変わった：${item.code}${item.genre}`);
-        setGenreSelectbox(item);
-        setCurrentIndex(index);
-      }
-    }
-  };
   return (
     <>
       <div className={SelectGenreStyle.selectGenre}>
-        <div className={SelectGenreStyle.list}>
-          {HOTPEPPR_GENRE_ARR.map((genreitem, index) => {
-            let isSelected: boolean = currentIndex === index;
-
-            return (
+        <div
+          className={
+            isSearching ? SelectGenreStyle.listSearching : SelectGenreStyle.list
+          }
+        >
+          {isSearching ? (
+            <div className="wrapLoading">
+              <Badge
+                isSearching={isSearching}
+                value={"検索中"}
+                icon={<FontAwesomeIcon icon={faSearch} />}
+                onClickHandler={onClickHandler}
+              ></Badge>
+              <Loading></Loading>
+            </div>
+          ) : (
+            hotpepperGenreArr.map((item, index) => (
               <React.Fragment key={index}>
                 <Badge
-                  thisOnClick={() => changeGenreSelect(genreitem.code, index)}
-                  thisValue={genreitem.genre}
-                  thisSelected={isSelected}
-                  thisIcon={genreitem.icon}
+                  isSearching={isSearching}
+                  onClickHandler={onClickHandler}
+                  value={item.genre}
+                  icon={item.icon}
+                  genreCode={item.code}
                 ></Badge>
               </React.Fragment>
-            );
-          })}
+            ))
+          )}
         </div>
       </div>
     </>

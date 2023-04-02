@@ -4,7 +4,7 @@
 
 import { useContext } from "react";
 import { ButtonModalClose } from "../atoms/ButtonModalClose";
-import { ModalContext } from "../../providers/ModalProvider";
+import { ModalContext } from "../../providers/GlobalProviders";
 import { MessageModalStyle } from "./Style";
 
 export const MesageModal = () => {
