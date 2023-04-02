@@ -16,6 +16,7 @@ export const MainList = () => {
       navigation("/");
     }
     console.log(shopList);
+    // eslint-disable-next-line
   }, []);
 
   return (

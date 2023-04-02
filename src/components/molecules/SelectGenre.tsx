@@ -2,7 +2,7 @@
  * ジャンル選択バッジボタン
  */
 
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { Badge } from "../atoms/Badge";
 import { TypeGenle } from "../../type/globalTypes";
 import { Loading } from "../atoms/Loading";

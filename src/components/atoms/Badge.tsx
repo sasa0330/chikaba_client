@@ -1,9 +1,8 @@
 /*
  * バッジコンポーネント
  */
-import React, { useContext } from "react";
+import React from "react";
 import { BadgeStyle } from "./Style";
-import { SearchStateContext } from "../../providers/GlobalProviders";
 
 interface PropsType {
   //バッジをクリックした時のfuntion

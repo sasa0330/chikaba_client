@@ -2,14 +2,7 @@
  * 検索一覧画面
  */
 
-import {
-  useState,
-  useContext,
-  useRef,
-  useEffect,
-  EffectCallback,
-  DependencyList,
-} from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { SelectGenre } from "../molecules/SelectGenre";
 import {

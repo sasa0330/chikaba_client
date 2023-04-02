@@ -3,7 +3,7 @@
  */
 import { createContext, useState } from "react";
 import { TypeShopList, TypeModalState } from "../type/globalTypes";
-import { TypeGenle, UseStateGenreSelectbox } from "../type/globalTypes";
+import { UseStateGenreSelectbox } from "../type/globalTypes";
 
 type Props = {
   children: any;
