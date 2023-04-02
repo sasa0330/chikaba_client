@@ -16,7 +16,7 @@ export const MainList = () => {
       navigation("/");
     }
     console.log(shopList);
-    // eslint-disable-next-line
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
