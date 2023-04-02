@@ -56,3 +56,9 @@ export type TypeGenle = {
   icon?: JSX.Element | undefined;
   genre: string;
 };
+export type UseStateGenreSelectbox =
+  | TypeGenle
+  | {
+      code: "";
+      genre: "";
+    };

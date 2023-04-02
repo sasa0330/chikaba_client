@@ -5,7 +5,7 @@
 import React, { useContext } from "react";
 import { TypeShopList } from "../../type/globalTypes";
 import { Link } from "react-router-dom";
-import { ShopListContext } from "../../providers/ShopListProvider";
+import { ShopListContext } from "../../providers/GlobalProviders";
 import { ShopListItemStyle } from "./Style";
 
 export const ShopListItem: React.FC<TypeShopList> = (props) => {

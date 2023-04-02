@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ModalContext } from "../../providers/ModalProvider";
+import { ModalContext } from "../../providers/GlobalProviders";
 
 export const ButtonModalClose = () => {
   const { modalState, changeModalState } = useContext(ModalContext);

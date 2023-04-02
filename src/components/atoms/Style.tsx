@@ -1,29 +1,39 @@
 import { css } from "@emotion/css";
 const badgeBase = css`
-  display: block;
-  font-size: 13px;
-  text-align: center;
-  border-radius: 5px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: 28vw;
-  height: 18vw;
-  border: solid 1px #000;
-  margin-bottom: 5vw;
-  cursor: pointer;
-  box-shadow: 1px 1px 1px 1px rgb(0 0 0 / 50%);
-  padding: 10px;
+  justify-content: center;
+  flex-direction: column;
+  background: #e38b29;
+  color: #fff;
+  border-radius: 50%;
+  height: 30vw;
+  width: 30vw;
 `;
 export const BadgeStyle = {
   badge: badgeBase,
-  badgeSelected: css(
+  badgeSearching: css(
     badgeBase,
     css`
-      background-color: #ddd;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
     `
   ),
+  svg: css`
+    width: 8vw;
+    height: 8vw;
+    margin-bottom: 10px;
+    & svg {
+      width: 100%;
+      height: 100%;
+    }
+  `,
+  text: css`
+    font-size: 14px;
+    font-weight: bold;
+  `,
 };
 
 export const CircleButtonStyle = {

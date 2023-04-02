@@ -3,18 +3,20 @@ import { css } from "@emotion/css";
 export const SelectGenreStyle = {
   selectGenre: css`
     width: 100%;
-    overflow: scroll;
-    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   `,
   list: css`
+    width: 70vw;
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
-
-    &:after {
-      content: "";
-      width: 28vw;
-    }
+  `,
+  listSearching: css`
+    width: 70vw;
+    display: flex;
+    justify-content: center;
   `,
 };
 
@@ -69,9 +71,9 @@ export const ShopListSearchResultStyle = {
 export const ShopListItemStyle = {
   item: css`
     padding: 10px;
-    border: solid 1px #000;
-    border-radius: 5px;
+    border-radius: 10px;
     margin: 0 10px 10px 10px;
+    background: #fff;
   `,
   link: css`
     width: 100%;
