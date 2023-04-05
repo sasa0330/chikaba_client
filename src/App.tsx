@@ -21,6 +21,7 @@ export const App = () => {
                 <Routes>
                   <Route path="/" element={<Index />} />
                   <Route path="/list" element={<List />} />
+                  {/* TODO :itemIdはShopListItem.tsxでやっているので不要かも */}
                   <Route path="/detail/:itemId" element={<Detail />} />
                 </Routes>
               </BrowserRouter>
