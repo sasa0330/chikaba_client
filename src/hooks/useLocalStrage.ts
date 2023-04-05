@@ -1,5 +1,3 @@
-import { currentPosition } from "../type/globalTypes";
-import { TypeShopList } from "../type/globalTypes";
 /**
  * 現在地を取得する処理
  */

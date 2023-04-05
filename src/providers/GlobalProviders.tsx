@@ -2,7 +2,7 @@
  * モーダル関連のステート・関数をグローバルに使うためのプロバイダー
  */
 import { createContext, useState } from "react";
-import { TypeShopList, TypeModalState } from "../type/globalTypes";
+import { TypeModalState } from "../type/globalTypes";
 import { UseStateGenreSelectbox } from "../type/globalTypes";
 
 type Props = {
