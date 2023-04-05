@@ -62,3 +62,8 @@ export type UseStateGenreSelectbox =
       code: "";
       genre: "";
     };
+
+export type currentPosition = {
+  lat: number;
+  lng: number;
+};

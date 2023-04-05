@@ -65,7 +65,7 @@ export const MessageModalStyle = {
 };
 export const ShopListSearchResultStyle = {
   shopList: css`
-    margin-top: 30px;
+    padding: 30px 0;
   `,
 };
 export const ShopListItemStyle = {

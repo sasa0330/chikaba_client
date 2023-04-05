@@ -13,7 +13,7 @@ interface PropsType {
   icon: JSX.Element | undefined;
   //検索中か
   isSearching: boolean;
-  onClickHandler: (e: any) => Promise<void>;
+  onClickHandler: (e: any) => Promise<void | boolean>;
 }
 
 export const Badge: React.FC<PropsType> = (props) => {

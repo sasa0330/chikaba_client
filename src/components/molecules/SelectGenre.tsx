@@ -15,7 +15,7 @@ import {
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 type Props = {
-  onClickHandler: (e: any) => Promise<void>;
+  onClickHandler: (e: any) => Promise<void | boolean>;
 };
 export const SelectGenre = (props: Props) => {
   const { onClickHandler } = props;

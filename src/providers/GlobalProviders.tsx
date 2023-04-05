@@ -14,8 +14,6 @@ type Props = {
  */
 export const ShopListContext = createContext(
   {} as {
-    shopList: TypeShopList[];
-    setShopList: Function;
     currentItemId: string;
     setCurrentItemId: Function;
   }
@@ -25,17 +23,11 @@ export const ShopListContext = createContext(
  * 店舗リスト用のProveider
  */
 export const ShopListProvider = (props: Props) => {
-  /**
-   * 取得した店舗情報を保持するステート
-   */
-  const [shopList, setShopList] = useState<TypeShopList[]>([]);
   const [currentItemId, setCurrentItemId] = useState<string>("");
 
   return (
     <>
-      <ShopListContext.Provider
-        value={{ shopList, setShopList, currentItemId, setCurrentItemId }}
-      >
+      <ShopListContext.Provider value={{ currentItemId, setCurrentItemId }}>
         {props.children}
       </ShopListContext.Provider>
     </>
@@ -70,7 +62,7 @@ export const ModalProvider = (props: Props) => {
   /**
    * モーダルの状態を変更する関数。
    * setModalStateするときはこの関数を使うと便利。
-   * @param text - モーダルにセットするテキスト
+   * @param message - モーダルにセットするテキスト
    * @param isLoading - モーダルにローディングアイコンを表示するか
    * @param isPossibleClose - ユーザーがモーダルを閉じられるようにするか
    */

@@ -4,6 +4,7 @@
 import { useParams } from "react-router-dom";
 import { TypeShopList } from "../../type/globalTypes";
 import { css } from "@emotion/css";
+import { useLocalStrage } from "../../hooks/useLocalStrage";
 
 const style = {
   img: css`
@@ -18,11 +19,9 @@ const style = {
 export const MainDetail = () => {
   //URLパラメータのitemId取得
   const { itemId } = useParams();
-  //セッションストレージの一覧情報オブジェクト取得
-  const shopListString = sessionStorage.getItem("shopListStorage");
-  const shopList: TypeShopList[] = shopListString
-    ? JSON.parse(shopListString)
-    : null;
+  const { getLocalStrageArray } = useLocalStrage();
+  const shopList: TypeShopList[] = getLocalStrageArray("shopListStorage");
+
   let shopObj: Pick<
     TypeShopList,
     "shopName" | "photoPcM" | "budgetName" | "lunch" | "address"
