@@ -16,7 +16,7 @@ export const App = () => {
       <ShopListProvider>
         <ModalProvider>
           <SearchStateProvider>
-            <div className="container is-pc">
+            <div className="container--pc">
               <BrowserRouter>
                 <Routes>
                   <Route path="/" element={<Index />} />
@@ -27,10 +27,7 @@ export const App = () => {
               </BrowserRouter>
               <MesageModal />
             </div>
-            <div className="container is-sp">
-              現在スマホ対応のみ🐧 <br />
-              600px以下まで横幅を縮めてください。
-            </div>
+            <div className="container--sp">スマホ幅のみ対応しています🐧</div>
           </SearchStateProvider>
         </ModalProvider>
       </ShopListProvider>

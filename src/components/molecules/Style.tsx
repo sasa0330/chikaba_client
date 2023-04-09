@@ -64,15 +64,13 @@ export const MessageModalStyle = {
   `,
 };
 export const ShopListSearchResultStyle = {
-  shopList: css`
-    padding: 30px 0;
-  `,
+  shopList: css``,
 };
 export const ShopListItemStyle = {
   item: css`
     padding: 10px;
     border-radius: 10px;
-    margin: 0 10px 10px 10px;
+    margin-bottom: 2.564102564102564vw;
     background: #fff;
   `,
   link: css`

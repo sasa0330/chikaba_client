@@ -7,6 +7,7 @@ import { ShopListSearchResult } from "../molecules/ShopListSearchResult";
 import { useNavigate } from "react-router-dom";
 import { useLocalStrage } from "../../hooks/useLocalStrage";
 import { TypeShopList } from "../../type/globalTypes";
+import { ListStyle } from "./Style";
 
 export const MainList = () => {
   const { getLocalStrageArray } = useLocalStrage();
@@ -22,8 +23,8 @@ export const MainList = () => {
   }, []);
 
   return (
-    <>
+    <div className={ListStyle.content}>
       <ShopListSearchResult shopList={shopList}></ShopListSearchResult>
-    </>
+    </div>
   );
 };

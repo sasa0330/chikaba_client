@@ -6,7 +6,6 @@ export const useShopList = () => {
     try {
       console.log("fetch開始");
       const response: any = await fetch(requestUrl);
-      console.log("fetch実行済み");
       const data: TypeShopList[] = await response.json();
       console.log("fetch終了");
 

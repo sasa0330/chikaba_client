@@ -7,13 +7,27 @@ import { css } from "@emotion/css";
 import { useLocalStrage } from "../../hooks/useLocalStrage";
 
 const style = {
+  main: css`
+    position: relative;
+    margin-bottom: 10.256410256410255vw;
+    aspect-ratio: 1;
+    width: 100%;
+    height: auto;
+  `,
   img: css`
-    text-align: center;
-    margin: 20px 0;
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 1;
   `,
   shopName: css`
-    font-size: 30px;
-    font-weight: bold;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: #fff;
+    font-size: 5.128205128205128vw;
+    background: #555555aa;
+    width: 100%;
+    padding: 3.8461538461538463vw 2.564102564102564vw;
   `,
 };
 export const MainDetail = () => {
@@ -38,10 +52,15 @@ export const MainDetail = () => {
 
   return (
     <>
-      <div className={style.img}>
-        <img src={shopObj.photoPcM} alt={shopObj.shopName} />
+      <div className={style.main}>
+        <img
+          className={style.img}
+          src={shopObj.photoPcM}
+          alt={shopObj.shopName}
+        />
+        <div className={style.shopName}>{shopObj.shopName}</div>
       </div>
-      <div className={style.shopName}>{shopObj.shopName}</div>
+
       <div>{shopObj.budgetName}</div>
       <div>{shopObj.lunch}</div>
       <div>{shopObj.address}</div>

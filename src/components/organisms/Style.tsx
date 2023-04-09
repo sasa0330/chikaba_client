@@ -12,7 +12,13 @@ export const IndexStyle = {
   title: css`
     color: #e38b29;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 4.615384615384616vw;
     margin-bottom: 30px;
+  `,
+};
+
+export const ListStyle = {
+  content: css`
+    width: 100%;
   `,
 };

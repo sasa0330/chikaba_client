@@ -52,29 +52,28 @@ footer {
   display: none;
 }
 
-.container {
-  height: 100vh;
-}
-
-.container {
+.container--pc {
   height: 100%;
   min-height: 100vh;
+  padding: 2.666666666666667vw;
   background: #fdeedc;
+  font-size: 4.102564102564102vw;
 }
-.container.is-pc {
-  display: block;
-}
-.container.is-sp {
+.container--sp {
   display: none;
 }
-@media screen and (min-width: 600px) {
-  .container.is-pc {
+@media screen and (min-width: 500px) {
+  .container--pc {
     display: none;
   }
-  .container.is-sp {
+  .container--sp {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fdeedc;
   }
 }
 
