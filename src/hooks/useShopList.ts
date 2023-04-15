@@ -32,8 +32,8 @@ export const useShopList = () => {
     genre: string
   ) => string = (lat, lng, genre) => {
     const getParameter = `?lat=${lat}&lng=${lng}&genre=${genre}`;
-    return `http://localhost:3001/api/shopList${getParameter}`;
-    //return `https://express-search-shop.onrender.com/api/shopList${getParameter}`;
+    //return `http://localhost:3001/api/shopList${getParameter}`;
+    return `https://express-search-shop.onrender.com/api/shopList${getParameter}`;
   };
   return { getShopList, generateRequestUrl };
 };
