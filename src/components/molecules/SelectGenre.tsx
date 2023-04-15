@@ -3,7 +3,7 @@
  */
 
 import React, { useContext } from "react";
-import { Badge } from "../atoms/Badge";
+import { ButtonSearchShop } from "../atoms/ButtonSearchShop";
 import { TypeGenle } from "../../type/globalTypes";
 import { Loading } from "../atoms/Loading";
 import { SelectGenreStyle } from "./Style";
@@ -110,24 +110,24 @@ export const SelectGenre = (props: Props) => {
         >
           {isSearching ? (
             <div className="wrapLoading">
-              <Badge
+              <ButtonSearchShop
                 isSearching={isSearching}
                 value={"検索中"}
                 icon={<FontAwesomeIcon icon={faSearch} />}
                 onClickHandler={onClickHandler}
-              ></Badge>
+              ></ButtonSearchShop>
               <Loading></Loading>
             </div>
           ) : (
             hotpepperGenreArr.map((item, index) => (
               <React.Fragment key={index}>
-                <Badge
+                <ButtonSearchShop
                   isSearching={isSearching}
                   onClickHandler={onClickHandler}
                   value={item.genre}
                   icon={item.icon}
                   genreCode={item.code}
-                ></Badge>
+                ></ButtonSearchShop>
               </React.Fragment>
             ))
           )}

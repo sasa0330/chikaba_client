@@ -17,11 +17,13 @@ export const ShopListSearchResult: FC<{ shopList: TypeShopList[] }> = (
               <ShopListItem
                 key={shop.itemId}
                 itemId={shop.itemId}
-                photoPcM={shop.photoPcM}
+                photo={shop.photo}
                 shopName={shop.shopName}
                 lunch={shop.lunch}
                 budgetName={shop.budgetName}
                 address={shop.address}
+                access={shop.access}
+                smoking={shop.smoking}
               />
             );
           })}

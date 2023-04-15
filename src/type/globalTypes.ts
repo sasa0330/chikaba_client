@@ -17,7 +17,7 @@ export type TypeShopList = {
   // 店舗ID
   itemId: string;
   // メイン画像
-  photoPcM: string;
+  photo: string;
   // 店名
   shopName: string;
   //ランチがあるか
@@ -26,6 +26,10 @@ export type TypeShopList = {
   budgetName: string;
   //住所
   address: string;
+  //アクセス情報
+  access: string;
+  //喫煙情報
+  smoking: string;
   //キャッチコピー
   catch?: string;
   //総席数（例：300）

@@ -1,36 +1,13 @@
-/*
- * バッジコンポーネント
- */
-import React from "react";
-import { BadgeStyle } from "./Style";
+import { css } from "@emotion/css";
+const style = css`
+  font-size: 12px;
+  padding: 2px 5px;
+  border: solid 1px #000;
+  border-radius: 5px;
+  margin-right: 5px;
+`;
 
-interface PropsType {
-  //バッジをクリックした時のfuntion
-  genreCode?: string;
-  //バッジのテキスト
-  value: string;
-  //基本のバッジスタイル以外のスタイル
-  icon: JSX.Element | undefined;
-  //検索中か
-  isSearching: boolean;
-  onClickHandler: (e: any) => Promise<void | boolean>;
-}
-
-export const Badge: React.FC<PropsType> = (props) => {
-  const { genreCode, value, icon, isSearching, onClickHandler } = props;
-  return (
-    <>
-      <button
-        onClick={onClickHandler}
-        className={isSearching ? BadgeStyle.badgeSearching : BadgeStyle.badge}
-        data-genre-code={genreCode}
-      >
-        <div className={BadgeStyle.svg}>{icon}</div>
-        <div
-          className={BadgeStyle.text}
-          dangerouslySetInnerHTML={{ __html: value }}
-        ></div>
-      </button>
-    </>
-  );
+export const Badge = (props: any) => {
+  const { children } = props;
+  return <>{children ? <div className={style}>{children}</div> : null}</>;
 };

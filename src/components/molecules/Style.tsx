@@ -91,6 +91,17 @@ export const ShopListItemStyle = {
   text: css`
     width: 65%;
   `,
+  badges: css`
+    display: flex;
+    margin-bottom: 10px;
+  `,
+  badge: css`
+    font-size: 12px;
+    padding: 2px 5px;
+    border: solid 1px #000;
+    border-radius: 5px;
+    margin-right: 5px;
+  `,
   title: css`
     font-size: 14px;
     margin-bottom: 10px;
@@ -98,5 +109,11 @@ export const ShopListItemStyle = {
   `,
   dicription: css`
     font-size: 12px;
+  `,
+  access: css`
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 10px;
   `,
 };

@@ -4,6 +4,7 @@
 import { useParams } from "react-router-dom";
 import { TypeShopList } from "../../type/globalTypes";
 import { css } from "@emotion/css";
+import { Badges } from "../molecules/Badges";
 import { useLocalStrage } from "../../hooks/useLocalStrage";
 
 const style = {
@@ -24,10 +25,11 @@ const style = {
     bottom: 0;
     left: 0;
     color: #fff;
-    font-size: 5.128205128205128vw;
-    background: #555555aa;
+    font-weight: bold;
+    font-size: 6.128205vw;
     width: 100%;
     padding: 3.8461538461538463vw 2.564102564102564vw;
+    text-shadow: 2px 2px 2px #000;
   `,
 };
 export const MainDetail = () => {
@@ -38,13 +40,14 @@ export const MainDetail = () => {
 
   let shopObj: Pick<
     TypeShopList,
-    "shopName" | "photoPcM" | "budgetName" | "lunch" | "address"
+    "shopName" | "photo" | "budgetName" | "lunch" | "address" | "smoking"
   > = {
     shopName: "",
-    photoPcM: "",
+    photo: "",
     budgetName: "",
     lunch: "",
     address: "",
+    smoking: "",
   };
   shopList.forEach((shop: TypeShopList) => {
     if (shop.itemId === itemId) return (shopObj = shop);
@@ -53,17 +56,18 @@ export const MainDetail = () => {
   return (
     <>
       <div className={style.main}>
-        <img
-          className={style.img}
-          src={shopObj.photoPcM}
-          alt={shopObj.shopName}
-        />
+        <img className={style.img} src={shopObj.photo} alt={shopObj.shopName} />
         <div className={style.shopName}>{shopObj.shopName}</div>
       </div>
-
+      <Badges lunch={shopObj.lunch} smoking={shopObj.smoking}></Badges>
       <div>{shopObj.budgetName}</div>
-      <div>{shopObj.lunch}</div>
       <div>{shopObj.address}</div>
+      <a
+        target="_brank"
+        href={`https://www.google.com/maps/place/${shopObj.shopName}`}
+      >
+        Googleマップで見る
+      </a>
     </>
   );
 };
