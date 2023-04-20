@@ -62,12 +62,6 @@ export const MainDetail = () => {
       <Badges lunch={shopObj.lunch} smoking={shopObj.smoking}></Badges>
       <div>{shopObj.budgetName}</div>
       <div>{shopObj.address}</div>
-      <a
-        target="_brank"
-        href={`https://www.google.com/maps/place/${shopObj.shopName}`}
-      >
-        Googleマップで見る
-      </a>
     </>
   );
 };
