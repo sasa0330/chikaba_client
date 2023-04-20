@@ -2,7 +2,6 @@
   "name": "search-shop",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001",
   "dependencies": {
     "@emotion/css": "^11.10.6",
     "@emotion/react": "^11.10.4",
@@ -19,6 +18,7 @@
     "@types/node": "^16.11.58",
     "@types/react": "^18.0.18",
     "@types/react-dom": "^18.0.6",
+    "http-proxy-middleware": "^2.0.6",
     "jsdoc": "^4.0.0",
     "node-fetch": "^2.6.8",
     "react": "^18.2.0",
