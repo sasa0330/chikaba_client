@@ -92,7 +92,10 @@ export const MainIndex = () => {
           <div className={IndexStyle.title}>検索中…</div>
         ) : (
           <div className={IndexStyle.title}>
-            どのような飲食店をお探しですか？
+            <div className={IndexStyle.titleMain}>チカバ</div>
+            <div className={IndexStyle.titleSub}>
+              の素敵な居酒屋・バーを探しましょう。
+            </div>
           </div>
         )}
 
