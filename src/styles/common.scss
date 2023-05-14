@@ -65,18 +65,19 @@ footer {
   background: #fdeedc;
   font-size: 4.102564102564102vw;
 }
-.container--sp {
+.container--pc {
   display: none;
 }
 @media screen and (min-width: 500px) {
-  .container--pc {
+  .container--sp {
     display: none;
   }
-  .container--sp {
+  .container--pc {
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
+    text-align: center;
     width: 100vw;
     height: 100vh;
     background-color: #fdeedc;
