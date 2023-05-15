@@ -32,7 +32,26 @@ export const ListStyle = {
   `,
 };
 
-export const detailStyle = {
+export const detailStyle = (photoUrl: string) => ({
+  Main: css`
+    position: relative;
+    margin-bottom: 10.256410256410255vw;
+    aspect-ratio: 1;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url(${photoUrl ? photoUrl : "none"});
+      filter: blur(10px);
+    }
+  `,
   img: css`
     width: 100%;
     object-fit: contain;
@@ -53,4 +72,4 @@ export const detailStyle = {
     z-index: 1;
     position: absolute;
   `,
-};
+});
