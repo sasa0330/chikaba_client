@@ -33,9 +33,9 @@ export const ListStyle = {
 };
 
 export const detailStyle = (photoUrl: string) => ({
-  Main: css`
+  MainImg: css`
     position: relative;
-    margin-bottom: 10.256410256410255vw;
+    margin-bottom: 3.5000000000000004vw;
     aspect-ratio: 1;
     width: 100%;
     height: auto;
@@ -51,6 +51,9 @@ export const detailStyle = (photoUrl: string) => ({
       background-image: url(${photoUrl ? photoUrl : "none"});
       filter: blur(10px);
     }
+  `,
+  MainText: css`
+    padding: 10px;
   `,
   img: css`
     width: 100%;
@@ -71,5 +74,14 @@ export const detailStyle = (photoUrl: string) => ({
     text-shadow: 2px 2px 2px #000;
     z-index: 1;
     position: absolute;
+  `,
+  access: css`
+    margin-bottom: 14px;
+    word-break: break-all;
+    font-weight: bold;
+  `,
+  paragraph: css`
+    margin-bottom: 14px;
+    word-break: break-all;
   `,
 });

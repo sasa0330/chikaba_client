@@ -24,6 +24,7 @@ export const ShopListSearchResult: FC<{ shopList: TypeShopList[] }> = (
                 address={shop.address}
                 access={shop.access}
                 smoking={shop.smoking}
+                catch={shop.catch}
               />
             );
           })}
