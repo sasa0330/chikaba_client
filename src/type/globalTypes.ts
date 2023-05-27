@@ -31,7 +31,7 @@ export type TypeShopList = {
   //喫煙情報
   smoking: string;
   //キャッチコピー
-  catch?: string;
+  catch: string;
   //総席数（例：300）
   capacity?: number;
   //飲み放題（例：あり）

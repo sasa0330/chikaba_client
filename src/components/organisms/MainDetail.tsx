@@ -14,7 +14,14 @@ export const MainDetail = () => {
 
   let shopObj: Pick<
     TypeShopList,
-    "shopName" | "photo" | "budgetName" | "lunch" | "address" | "smoking"
+    | "shopName"
+    | "photo"
+    | "budgetName"
+    | "lunch"
+    | "address"
+    | "smoking"
+    | "catch"
+    | "access"
   > = {
     shopName: "",
     photo: "",
@@ -22,6 +29,8 @@ export const MainDetail = () => {
     lunch: "",
     address: "",
     smoking: "",
+    catch: "",
+    access: "",
   };
   shopList.forEach((shop: TypeShopList) => {
     if (shop.itemId === itemId) return (shopObj = shop);
@@ -31,13 +40,19 @@ export const MainDetail = () => {
   const style = detailStyle(photoUrl);
   return (
     <>
-      <div className={style.Main}>
+      <div className={style.MainImg}>
         <img className={style.img} src={shopObj.photo} alt={shopObj.shopName} />
         <div className={style.shopName}>{shopObj.shopName}</div>
       </div>
-      <Badges lunch={shopObj.lunch} smoking={shopObj.smoking}></Badges>
-      <div>{shopObj.budgetName}</div>
-      <div>{shopObj.address}</div>
+      <div className={style.MainText}>
+        <Badges lunch={shopObj.lunch} smoking={shopObj.smoking}></Badges>
+        <div className={style.access}>{shopObj.access}</div>
+        <div className={style.paragraph}>
+          ディナー目安：{shopObj.budgetName}
+        </div>
+        <div className={style.paragraph}>{shopObj.address}</div>
+        <div className={style.paragraph}>{shopObj.catch}</div>
+      </div>
     </>
   );
 };
