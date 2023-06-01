@@ -1,25 +1,5 @@
 # Note
 
-・飲食店検索アプリです。ざっくりした構成は以下の通り\
-create-react-app\
-typescript\
-emotion：メインのスタイル\
-scss：emotion に移行中\
-mui：アイコンで使用\
-\
-詳細画面が作成中なので、まだ真っ白です。\
-
-# ディレクトリ構成
-
-アトミックデザインっぽい構成にしています。\
-components\
-/atoms\
-/molecules\
-/organisms\
-/pages\
-\
-各ディレクトリ下は、コンポーネント用ファイルと emotion スタイル用のファイルがあります。\
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
